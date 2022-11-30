@@ -22,7 +22,7 @@ Welcome to [BLS Digital](#)!
     - [Solved](#solved)
     - [Left to Solve](#left-to-solve)
 - [Deployment](#deployment)
-    - [To Deploy The Project](#to-deploy-the-project)
+    - [Deployment to Heroku](#deployment-to-heroku)
     - [Forking The Repository On GitHub](#forking-the-repository-on-github)
     - [How To Clone The Project](#how-to-clone-the-project)
 - [Credits](#credits)
@@ -208,7 +208,7 @@ Test for responsiveness was made with [Google Chrome DevTools](https://developer
 
 [Back to top](#contents)
 ## Deployment
-### To deploy the project
+### Deployment to Heroku
 This application is deployed using [Heroku](https://heroku.com/).
 
 - Before doing the following steps I created a env.py file in gitpod that contains the sensitive information that should not be pushed to github/heroku. And added that file to the .gitignore file.
@@ -219,41 +219,77 @@ The steps for deploying through [Heroku](https://heroku.com/) is as follows:
 
 1. Visit [Heroku](https://heroku.com/) and make sure you are logged in.
 2. Click on New and then choose New App.
-
-![First step](#)
-
 3. Choose a name for your app and then choose your region.
 4. Then press 'Create app'.
 
-![Second step](#)
+#### Attach The Database
+1. Log in or sign up to [ElephantSQL](https://www.elephantsql.com/).
+2. Press create new instance.
 
-5. Make sure you are on the 'Deploy' tab.
-6. Choose connect to GitHub account.
-7. Search for your repository that you want to deploy.
-8. Press 'Connect'
+![Create new](media/readme_images/elephant1.png)
 
-![Third step](#)
+3. Choose a name and plan. Then click on select region.
 
-9. Choose if you want automatic deploys from your repository on GitHub.
-10. Choose which branch you want to deploy.
-11. Press 'Deploy Branch'.
+![Name and plan](media/readme_images/elephant2.png)
 
-![Fouth step](#)
+4. Select the data center that is closest to you and press review.
 
-12. When the installation is done. Go to the settings tab.
-13. Press on 'Reveal Config Vars'.
+![Data center](media/readme_images/elephant3.png)
 
-![Fifth step](#)
+5. Then just click on "Create Instance".
+6. Go back to the start page and click on your new database.
+7. Copy the URL for the database.
 
-14. Add config vars that are necessary. I'm not showing the keys beacuase they are secret.
+![Data center](media/readme_images/elephant4.png)
 
-![Sixth step](#)
+8. Back in [Heroku](https://heroku.com/) click on the settings tab of your application.
+9. Click on "Reveal config vars".
+10. Add a new config var named DATABASE_URL and paste in the URL from [ElephantSQL](https://www.elephantsql.com/) as the value.
+11. Go back to Gitpod or other IDE and install two more requirements for the database:
+    - `pip3 install dj_databse_url`
+    - `pip3 install psycopg2-binary`
+12. Update your requirements.txt file by typing in `pip3 freeze --local > requirements.txt`
+13. Add the DATABASE_URL to your env.py file.
+14. Go to settings.py and `import dj_database_url`
+15. Comment out the default `DATABASES` setting.
+16. Add this under the commented out section:
 
-15. Add the buildpacks needed.
+    ```
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    }
+    ```
+17. Run migrations for the new database.
 
-![Seventh step](#)
+#### Continue Deployment to Heroku
+1. Create a file in the base directory called "Procfile" and add `web: gunicorn project_name.wsgi` so Heroku will know what kind of application it is.
+2. In settings.py add ['app_name.heroku.com', 'localhost'] to `ALLOWED_HOSTS`.
+3. Commit and push these changes to GitHub.
 
-16. Now you are done and can open the app!
+4. Back in the Heroku settings tab update the config vars:
+    |     Variable name     |                           Value/where to find value                           |
+    |:---------------------:|:-----------------------------------------------------------------------------:|
+    | AWS_ACCESS_KEY_ID     | AWS CSV file                                                                  |
+    | AWS_SECRET_ACCESS_KEY | AWS CSV file                                                                  |
+    | DATABASE_URL          | In your ElephantSQL dashboard                                                 |
+    | EMAIL_HOST_PASS       | Password from email client                                                    |
+    | EMAIL_HOST_USER       | Email address                                                                 |
+    | SECRET_KEY            | Random key generated with [Djecrety](https://djecrety.ir/)                    |
+    | STRIPE_PUBLIC_KEY     | Stripe Dashboard > Developers tab > API Keys > Publishable key                |
+    | STRIPE_SECRET_KEY     | Stripe Dashboard > Developers tab > API Keys > Secret key                     |
+    | STRIPE_WH_SECRET      | Stripe Dashboard > Developers tab > Webhooks > site endpoint > Signing secret |
+    | USE_AWS               | True                                                                          |
+
+If you do this in the beginning of the project you will also need `DISABLE_COLLCETSTATIC` set to 1. When you have some staticfiles ready you can then remove this variable.
+
+5. If this is at the end of the project make sure `DEBUG` is set to `False` in settings.py.
+6. Go to the "Deploy" tab in Heroku and connect your GitHub account.
+7. Search for your repository and connect it.
+8. At the bottom of the page click "Deploy Branch".
+
+![Heroku Deploy](media/readme_images/heroku-deploy.png)
+
+9. You are now ready and can click "Open App" to see the live deployed version.
 
 
 [Back to top](#contents)
