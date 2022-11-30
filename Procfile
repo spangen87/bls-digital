@@ -1,1 +1,1 @@
-web: gunicorn bls-digital.wsgi
+web: gunicorn bls_digital.wsgi
