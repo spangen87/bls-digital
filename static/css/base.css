@@ -1,9 +1,13 @@
+html {
+  height: 100%;
+}
+
 /* GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
 body {
-    padding-top: 3rem;
+    padding-top: 80px;
     padding-bottom: 3rem;
     color: #151419;
     background-color: #f3efee;
