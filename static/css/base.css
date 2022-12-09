@@ -11,7 +11,7 @@ body {
     padding-bottom: 3rem;
     color: #151419;
     background-color: #f3efee;
-    height: 100vh;
+    min-height: 100vh;
   }
   
   
@@ -95,6 +95,8 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
+
+/* Overriding bootstrap standard button colors */
 
 .btn-primary {
   --bs-btn-hover-bg: #f3efee;
