@@ -51,9 +51,18 @@
                                 <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'products' %}">Products</a>
-                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                              aria-haspopup="true" aria-expanded="false">Products</a>
+                          <div class="dropdown-menu">
+                              <a class="dropdown-item" href="{% url 'products' %}?category=smart_home_locks">Smart Home Locks</a>
+                              <a class="dropdown-item" href="{% url 'products' %}?category=accessories">Accessories</a>
+                              <a class="dropdown-item" href="{% url 'products' %}?category=smart_lock_kit">Smart Lock Kits</a>
+                              <a class="dropdown-item" href="{% url 'products' %}?category=smart_padlocks">Smart Padlocks</a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="{% url 'products' %}">All Products</a>
+                          </div>
+                      </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Why Smart Locks?</a>
                         </li>
