@@ -204,7 +204,7 @@ Test for responsiveness was made with [Google Chrome DevTools](https://developer
 
 [Back to top](#contents)
 ### Left to Solve
-
+- When clicking on a category link under products, the products in that category won't show. 
 
 [Back to top](#contents)
 ## Deployment

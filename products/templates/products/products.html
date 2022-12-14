@@ -7,6 +7,17 @@
             <div class="col text-center mt-3">
                 <h2>Products</h2>
                 <hr class="w-100 mb-1">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="{% url 'products' %}?sort=category&direction=asc">Sort By Category</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'products' %}?sort=price&direction=asc"> Sort By Price</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'products' %}?sort=name&direction=asc">Sort By Name</a>
+                    </li>
+                  </ul>
             </div>
         </div>
         <div class="row">
