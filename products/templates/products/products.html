@@ -7,12 +7,17 @@
             <div class="col text-center mt-3">
                 <h2>Products</h2>
                 <hr class="w-100 mb-1">
+
+                    {% for c in current_categories %}   
+                        <p>{{ c.friendly_name }}</p>
+                    {% endfor %}
+
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                      <a class="nav-link" aria-current="page" href="{% url 'products' %}?sort=category&direction=asc">Sort By Category</a>
+                      <a class="nav-link" href="{% url 'products' %}?sort=category&direction=asc">Sort By Category</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="{% url 'products' %}?sort=price&direction=asc"> Sort By Price</a>
+                      <a class="nav-link" href="{% url 'products' %}?sort=price&direction=asc">Sort By Price</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="{% url 'products' %}?sort=name&direction=asc">Sort By Name</a>
@@ -21,6 +26,15 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-12">
+                <!-- From Boutique Ado walkthrough -->
+                <p class="text-muted mt-3 text-center">
+                    {% if search_term or current_categories or current_sorting != 'None_None' %}
+                        <span class="small"><a href="{% url 'products' %}">All Products</a> | </span>
+                    {% endif %}
+                    {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+                </p>
+            </div>
             <div class="product-container col-10 mx-auto">
                 <div class="row mx-auto">
                     <div class="row mx-auto">
@@ -43,6 +57,13 @@
                                             <div class="row">
                                                 <div class="col">
                                                     <p class="fs-4 mb-0 text-left fw-bold">$ {{ product.price }}</p>
+                                                    {% if product.category %}
+                                                    <p class="small text-right">
+                                                        <a href="{% url 'products' %}?category={{ product.category.name }}" class="text-muted">
+                                                            {{ product.category.friendly_name }}
+                                                        </a>
+                                                    </p>
+                                                    {% endif %}
                                                     <a href="#" class="btn btn-primary">Add to Cart</a>
                                                 </div>
                                             </div>
