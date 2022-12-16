@@ -29,6 +29,25 @@
                     {% endif %}
                     <p class="lead mb-0 text-left fw-bold">$ {{ product.price }}</p>
                     <p class="mt-3">{{ product.description }}</p>
+                    <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col-12">
+                                <p class="mt-3"><strong>Quantity:</strong></p>
+                                <div class="form-group w-50">
+                                    <div class="input-group">
+                                        <input type="number" class="form-control qty_input" name="quantity" value="1" min="1" max="99" data-item-id="{{ product.id }}" id="id_qty_{ product.id }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <a href="{% url 'products' %}" class="btn btn-secondary">Back to Products</a>
+                                <input type="submit" class="btn btn-primary" value="Add to Shopping Bag">
+                            </div>
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
