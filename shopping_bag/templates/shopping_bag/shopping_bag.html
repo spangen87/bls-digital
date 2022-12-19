@@ -30,24 +30,36 @@
                             <p class="text-muted fw-normal mb-2">{{ item.product.sku }}</p>
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                            <button class="btn btn-link px-2"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                <i class="fas fa-minus"></i>
-                            </button>
-
-                            <input id="form1" min="0" name="quantity" value="2" type="number"
-                                class="form-control form-control-sm" />
-
-                            <button class="btn btn-link px-2"
-                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                <i class="fas fa-plus"></i>
-                            </button>
+                            <form method="POST" action="{% url 'adjust_bag' item.item_id %}" class="form update-form">
+                                {% csrf_token %}
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty btn btn-link px-2" data-item_id="{{ product.id }}"
+                                            id="decrement-qty_{{ product.id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-minus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input type="number" class="form-control qty_input" name="quantity" value="{{ item.quantity }}"
+                                        min="1" max="99" data-item-id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn btn-link px-2" data-item_id="{{ product.id }}"
+                                            id="increment-qty_{{ product.id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-plus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <a class="update-link text-info"><small>Update</small></a>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                             <h5 class="mb-0">$ {{ item.product.price }}</h5>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                            <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                            <a class="text-danger remove-item" id="remove_{{ item.item_id }}/"><i class="fas fa-trash fa-lg"></i></a>
                         </div>
                     </div>
                 </div>
@@ -69,9 +81,9 @@
                     <p><strong>Delivery: ${{ delivery|floatformat:2 }}</strong></p>
                     <h5><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h5>
                     {% if free_delivery_delta > 0 %}
-                        <p class="text-danger">
-                            You will get free delivery if you spend <strong>${{ free_delivery_delta }}</strong> more!
-                        </p>
+                    <p class="text-danger">
+                        You will get free delivery if you spend <strong>${{ free_delivery_delta }}</strong> more!
+                    </p>
                     {% endif %}
                 </div>
             </div>
@@ -89,5 +101,32 @@
         </div>
     </div>
 </div>
+
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+{% include 'products/includes/quantity_input_script.html' %}
+
+<script type="text/javascript">
+    // Update quantity on click
+    $('.update-link').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/shopping_bag/remove/${itemId}`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+
+        $.post(url, data)
+        .done(function() {
+            location.reload();
+        });
+    })
+</script>
 
 {% endblock %}

@@ -152,3 +152,7 @@ body {
 .fa-shopping-bag {
   font-size: xx-large;
 }
+
+a:hover {
+  cursor: pointer;
+ }
