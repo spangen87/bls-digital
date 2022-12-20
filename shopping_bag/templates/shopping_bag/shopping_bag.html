@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block content %}
 
@@ -57,7 +58,8 @@
                             <a class="update-link text-info"><small>Update</small></a>
                         </div>
                         <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                            <h5 class="mb-0">$ {{ item.product.price }}</h5>
+                            <p class="mb-0 text-muted">${{ item.product.price }}</p>
+                            <p class="mb-0"><strong>Subtotal: ${{ item.product.price | calc_subtotal:item.quantity }}</strong></p>
                         </div>
                         <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                             <a class="text-danger remove-item" id="remove_{{ item.item_id }}/"><i
