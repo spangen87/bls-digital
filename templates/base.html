@@ -95,7 +95,18 @@
           </form>
           <ul class="nav justify-content-end">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'view_shopping_bag' %}"><i class="fas fa-shopping-bag"></i></a>
+              <a class="nav-link" href="{% url 'view_shopping_bag' %}"><i class="fas fa-shopping-bag"></i>
+                {% if bag_items %}
+                <span class="badge rounded-pill badge-notification bg-danger">{{ product_count }}</span>
+                {% endif %}
+                <p class="text-small text-muted">
+                  {% if bag_items %}
+                    ${{ grand_total|floatformat:2 }}
+                  {% else %}
+                    $0.00
+                  {% endif %}
+                </p>
+              </a>
             </li>
           </ul>
         </div>
