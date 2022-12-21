@@ -186,3 +186,9 @@ input[type=number] {
 .toast-capper {
   height: 2px;
 }
+
+.bag-notification-wrapper {
+  height: 100px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
