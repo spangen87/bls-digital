@@ -92,7 +92,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'shopping_bag.contexts.bag_contents',
             ],
-            'buitins': [
+            'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
                 'crispy_forms.templatetags.crispy_forms_field',
             ]
