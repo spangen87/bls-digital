@@ -49,9 +49,12 @@ INSTALLED_APPS = [
     'home',
     'products',
     'shopping_bag',
+    'checkout',
 
     # Other
     'storages',
+    'django_countries',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
