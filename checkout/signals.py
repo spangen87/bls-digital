@@ -14,7 +14,7 @@ def update_on_save(sender, instance, created, **kwargs):
 
 
 @receiver(post_delete, sender=OrderLineItem)
-def delete_on_save(sender, instance, created, **kwargs):
+def delete_on_save(sender, instance, **kwargs):
     """
     Update order total when lineitem is deleted
     """

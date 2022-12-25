@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+ <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container h-100 py-5">
+    <div class="row d-flex h-100">
+        <div class="col-10">
+            <div class="d-flex mb-4">
+                <h3 class="fw-normal mb-0 text-black">Thank You!</h3>
+                <hr>
+                <p>Your order informstion. An email will be sent to <strong>{{ order.email }}</strong> with your confirmation.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-lg-7">
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
