@@ -45,12 +45,12 @@ def checkout(request):
                         order_line_item.save()
                 except Product.DoesNotExist:
                     messsage.error(request, (
-                        'One of the products was nopt found.'
+                        'One of the products was not found.'
                         'Contact us for assistance.'
                     ))
                     order.delete()
                     return redirect(reverse('view_bag'))
-            request.session['save_info'] = 'save_info' in request.POST
+            request.session['save_info'] = 'save-info' in request.POST
             return redirect(
                 reverse('checkout_success', args=[order.order_number]))
         else:
