@@ -18,8 +18,8 @@
 </div>
     
     <div class="row mx-auto justify-content-center">
-        <div class="col-12 col-lg-7">
-            <div class="card p-2 border">
+        <div class="col-12 col-md-7 col-lg-6 col-xl-4">
+            <div class="card p-2">
                 <div class="row">
                     <div class="col">
                         <small class="text-muted">Order Info:</small>
@@ -28,22 +28,22 @@
 
                 <div class="row">
                     <div class="col-12 col-md-4">
-                        <p>Order Number:</p>
+                        <p class="fw-bold">Order Number:</p>
                     </div>
-                    <div class="col-12 col-md-4 text-md-right">
+                    <div class="col-12 col-md-8 text-md-end">
                         <p>{{ order.order_number }}</p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-md-4">
-                        <p>Order Date:</p>
+                        <p class="fw-bold">Order Date:</p>
                     </div>
-                    <div class="col-12 col-md-4 text-md-right">
+                    <div class="col-12 col-md-8 text-md-end">
                         <p>{{ order.date }}</p>
                     </div>
                 </div>
-
+                <hr>
                 <div class="row">
                     <div class="col">
                         <small class="text-muted">Order Details::</small>
@@ -53,14 +53,14 @@
                 {% for item in order.lineitems.all %}
                 <div class="row">
                     <div class="col-12 col-md-4">
-                        <p class="small">{{ item.product.name }}</p>
+                        <p class="small fw-bold">{{ item.product.name }}</p>
                     </div>
-                    <div class="col-12 col-md-4 text-md-right">
-                        <p class="small">{{ item.quantity }} pcs ({{ item.product.price }} per piece)</p>
+                    <div class="col-12 col-md-8 text-md-end">
+                        <p class="small">{{ item.quantity }} pcs (${{ item.product.price }} per piece)</p>
                     </div>
                 </div>
                 {% endfor %}
-
+                <hr>
                 <div class="row">
                     <div class="col">
                         <small class="text-muted">Delivery Address:</small>
@@ -69,18 +69,18 @@
 
                 <div class="row">
                     <div class="col-12 col-md-4">
-                        <p>Name:</p>
+                        <p class="fw-bold">Name:</p>
                     </div>
-                    <div class="col-12 col-md-4 text-md-right">
+                    <div class="col-12 col-md-8 text-md-end">
                         <p>{{ order.full_name}}</p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-md-4">
-                        <p>Address:</p>
+                        <p class="fw-bold">Address:</p>
                     </div>
-                    <div class="col-12 col-md-4 text-md-right">
+                    <div class="col-12 col-md-8 text-md-end">
                         <p>{{ order.street_address1 }}</p>
                         <p>{{ order.street_address2 }}</p>
                         <p>{{ order.postcode }}</p>
@@ -92,22 +92,22 @@
 
                 <div class="row">
                     <div class="col-12 col-md-4">
-                        <p>Phone Number:</p>
+                        <p class="fw-bold">Phone Number:</p>
                     </div>
-                    <div class="col-12 col-md-4 text-md-right">
+                    <div class="col-12 col-md-8 text-md-end">
                         <p>{{ order.phone_number }}</p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-md-4">
-                        <p>Email:</p>
+                        <p class="fw-bold">Email:</p>
                     </div>
-                    <div class="col-12 col-md-4 text-md-right">
+                    <div class="col-12 col-md-8 text-md-end">
                         <p>{{ order.email }}</p>
                     </div>
                 </div>
-
+                <hr>
                 <div class="row">
                     <div class="col">
                         <small class="text-muted">Billing Info:</small>
@@ -116,28 +116,28 @@
 
                 <div class="row">
                     <div class="col-12 col-md-4">
-                        <p>Order Total:</p>
+                        <p class="fw-bold">Order Total:</p>
                     </div>
-                    <div class="col-12 col-md-4 text-md-right">
-                        <p>{{ order.total }}</p>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12 col-md-4">
-                        <p>Delivery Costs:</p>
-                    </div>
-                    <div class="col-12 col-md-4 text-md-right">
-                        <p>{{ order.delivery_cost }}</p>
+                    <div class="col-12 col-md-8 text-md-end">
+                        <p>${{ order.order_total }}</p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 col-md-4">
-                        <p>Grand Total:</p>
+                        <p class="fw-bold">Delivery Costs:</p>
                     </div>
-                    <div class="col-12 col-md-4 text-md-right">
-                        <p>{{ order.grand_total }}</p>
+                    <div class="col-12 col-md-8 text-md-end">
+                        <p>${{ order.delivery_cost }}</p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <p class="fw-bold">Grand Total:</p>
+                    </div>
+                    <div class="col-12 col-md-8 text-md-end">
+                        <p>${{ order.grand_total }}</p>
                     </div>
                 </div>
             </div>
