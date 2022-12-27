@@ -206,7 +206,8 @@ Test for responsiveness was made with [Google Chrome DevTools](https://developer
 ### Left to Solve
 - When clicking on a category link under products, the products in that category won't show.
 - When sorting by name it throws an error saying that Lower is not defined.
-- Submitting checkout form without country code on the phone number throws an error instead of a message. 
+- Submitting checkout form without country code on the phone number throws an error instead of a message.
+- No post from checkout/wh.
 
 [Back to top](#contents)
 ## Deployment

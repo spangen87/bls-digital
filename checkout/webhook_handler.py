@@ -6,7 +6,7 @@ class StripeWH_Handler:
     Handle Stripe webhooks
     Credits to Boutique Ado Walkthrough
     """
-    def __init__(self, event):
+    def __init__(self, request):
         self.request = request
 
     def handle_event(self, event):
@@ -21,6 +21,8 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeded webhook from Stripe
         """
+        intent = event.data.object
+        print(intent)
         return HttpResponse(
             content=f'Webhook recieved: {event["type"]}',
             status=200)
