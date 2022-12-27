@@ -87,6 +87,17 @@ body {
     }
   }
 
+  @media (max-width: 500px) {
+    .navbar-brand {
+      display: none;
+    }
+
+    body {
+      padding-top: 56px;
+      padding-bottom: 0;
+    }
+  }
+
 .logo {
   max-height: 50px;
 }
