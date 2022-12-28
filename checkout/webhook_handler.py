@@ -87,7 +87,7 @@ class StripeWH_Handler:
                         county=shipping_details.address.state,
                         country=shipping_details.address.country,
                         phone_number=shipping_details.phone,
-                        email=billing_detail,
+                        email=billing_details.email,
                         original_bag=bag,
                         stripe_pid=pid,
                     )
