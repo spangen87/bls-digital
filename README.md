@@ -200,7 +200,10 @@ Test for responsiveness was made with [Google Chrome DevTools](https://developer
 [Back to top](#contents)
 ## Bugs
 ### Solved
+- When clicking on a category link under products, the products in that category won't show.
+I solved this one by adding a split by "," to the category in the views.
 
+- When sorting by name it throws an error saying that Lower is not defined.
 
 [Back to top](#contents)
 ### Left to Solve
