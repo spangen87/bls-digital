@@ -143,6 +143,19 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col">
+            {% if from_profile %}
+                <a href="{% url 'profile' %}" class="btn btn-primary">
+                    Back To My Profile
+                </a>
+            {% else %}
+                <a href="{% url 'products' %}" class="btn btn-primary">
+                    Back To Shop
+                </a>
+            {% endif %}
+        </div>
+    </div>
 </div>
 
 
