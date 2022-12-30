@@ -46,16 +46,20 @@
                             <tr>
                                 <td>
                                     <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
-                                        {{ order.order_number|truncatechars:5 }}
+                                        {{ order.order_number|truncatechars:6 }}
                                     </a>
                                 </td>
                                 <td>
                                     {{ order.date }}
                                 </td>
                                 <td>
-                                    <li class="small">
-                                        {{ item.product.name }} x{{ item.quantity }}
-                                    </li>
+                                    <ul class="list-unstyled">
+                                        {% for item in order.lineitems.all %}
+                                        <li class="small">
+                                            {{ item.product.name }}, ({{ item.quantity }} pcs)
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
                                 </td>
                                 <td>
                                     ${{ order.grand_total }}
