@@ -15,12 +15,12 @@ class UserProfile(models.Model):
     default_full_name = models.CharField(max_length=50, null=True, blank=True)
     default_email = models.EmailField(max_length=254, null=True, blank=True)
     phone_regex = RegexValidator(
-        regex=r'^\+\d{8,15}$',
+        regex=r'^\+\d{8,17}$',
         message="Phone number must be entered in the format:\
              '+999999999'. Up to 15 digits allowed.")
     default_phone_number = models.CharField(
-        validators=[phone_regex], max_length=24, blank=True, null=True,
-        help_text='Phone number should be in the format +991112223')
+        validators=[phone_regex], max_length=18, blank=True, null=True,
+        help_text='Phone number must be in the format +991112223')
     default_country = CountryField(null=True, blank=True)
     default_postcode = models.CharField(max_length=20, null=True, blank=True)
     default_town_or_city = models.CharField(
