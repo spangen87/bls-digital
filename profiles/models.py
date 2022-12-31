@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from django.core.validators import RegexValidator
 from django.dispatch import receiver
 from django_countries.fields import CountryField
-from phonenumber_field.modelfields import PhoneNumberField
 
 
 class UserProfile(models.Model):
@@ -14,7 +14,13 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     default_full_name = models.CharField(max_length=50, null=True, blank=True)
     default_email = models.EmailField(max_length=254, null=True, blank=True)
-    default_phone_number = PhoneNumberField(null=True, blank=True)
+    phone_regex = RegexValidator(
+        regex=r'^\+\d{8,15}$',
+        message="Phone number must be entered in the format:\
+             '+999999999'. Up to 15 digits allowed.")
+    default_phone_number = models.CharField(
+        validators=[phone_regex], max_length=24, blank=True, null=True,
+        help_text='Phone number should be in the format +991112223')
     default_country = CountryField(null=True, blank=True)
     default_postcode = models.CharField(max_length=20, null=True, blank=True)
     default_town_or_city = models.CharField(

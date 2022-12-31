@@ -3,8 +3,8 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
+from django.core.validators import RegexValidator
 from django_countries.fields import CountryField
-from phonenumber_field.modelfields import PhoneNumberField
 
 from products.models import Product
 from profiles.models import UserProfile
@@ -17,7 +17,13 @@ class Order(models.Model):
         null=True, blank=True, related_name='orders')
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
-    phone_number = PhoneNumberField(null=False, blank=False)
+    phone_regex = RegexValidator(
+        regex=r'^\+\d{8,15}$',
+        message="Phone number must be entered in the format:\
+             '+999999999'. Up to 15 digits allowed.")
+    phone_number = models.CharField(
+        validators=[phone_regex], max_length=24, blank=False, null=False,
+        help_text='Phone number should be in the format +991112223')
     country = CountryField(null=False, blank=False)
     postcode = models.CharField(max_length=20, null=True, blank=True)
     town_or_city = models.CharField(max_length=40, null=False, blank=False)
