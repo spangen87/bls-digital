@@ -3,43 +3,45 @@
 
 {% block content %}
 
-<div class="container marketing">
-
-  <!-- Three columns of text below the carousel -->
-  <div class="row">
-    <div class="col-lg-4">
-      <h2 class="fw-normal"><i class="fas fa-user-lock"></i></h2>
-      <h2 class="fw-normal">Secure Your Home</h2>
-      <p>No need to replace your mechanical lock. Your old keys will still work when needed.</p>
-      <p><a class="btn btn-secondary" href="{% url 'smart_locks' %}">Read More &raquo;</a></p>
-    </div><!-- /.col-lg-4 -->
-    <div class="col-lg-4">
-      <h2 class="fw-normal"><i class="fas fa-wrench"></i></h2>
-      <h2 class="fw-normal">Easy To Install</h2>
-      <p>Anyone can install the locks with the easy manual provided. Just download the app and get going.</p>
-      <p><a class="btn btn-secondary" href="{% url 'products' %}">Shop Now &raquo;</a></p>
-    </div><!-- /.col-lg-4 -->
-    <div class="col-lg-4">
-      <h2 class="fw-normal"><i class="fas fa-key"></i></h2>
-      <h2 class="fw-normal">Share Keys</h2>
-      <p>Share digital keys to your friends and family. You decide if it's a permanent key or one that works for a specified time.</p>
-      <p><a class="btn btn-secondary" href="{% url 'products' %}">Shop Now &raquo;</a></p>
-    </div><!-- /.col-lg-4 -->
-  </div><!-- /.row -->
-
-
-  <!-- START THE FEATURETTES -->
-
-  <hr class="featurette-divider">
-
-  <div class="row featurette">
-    <div class="col-md-7">
-      <h2 class="featurette-heading fw-normal lh-1">Clean Look. <span class="text-muted">Available In Two Colors.</span></h2>
-      <p class="lead">Choose between white/silver or black. It will blend in to most environments.
-      </p>
+<div class="container">
+    <div class="row pt-4 mb-3">
+        <div class="col text-center">
+            <h1>Why Smart Locks?</h1>
+        </div>
     </div>
-    <div class="col-md-5">
-      <img class="img-fluid" src="{{ MEDIA_URL }}inside-door.jpg" alt="Lock on inside of a door">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <img src="{{ MEDIA_URL }}SetBridge_Adapter.jpg" alt="A set with smart locks" class="img-fluid">
+        </div>
+        <div class="col-12 col-md-6">
+            <h5>Convenient</h5>
+            <p>Open your door without effort. You only need your phone. 
+                If your phone is dead, you can always use your mechanical key.</p>
+            <h5>Secure</h5>
+            <p>Multi level ecryption ensures that your lock is safe. 
+                The only ones with access to your door is who you decide. 
+                If someones opens the door, you get an notification and you can see who it is.</p>
+            <h5>Easy To Use</h5>
+            <p>Share keys, temporarliy or permanenttly is easy. Just send an invitation to the user.</p>
+        </div>
     </div>
-  </div>
-  {% endblock %}
+    <hr>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h5>Have a business?</h5>
+            <p>Tedee Smart Locks works well even in small business. In the dashboard you can manage who haves access and where.</p>
+            <p>Want now more about out business solution? Send us a <a href="{% url 'contact' %}">message</a>.</p>
+        </div>
+        <div class="col-12 col-md-6">
+            <img src="{{ MEDIA_URL }}tedee_lifestyle_b2b.jpg" alt="A business man opens a door" class="img-fluid">
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12 text-center">
+            <a class="btn btn-primary" href="{% url 'products' %}">Buy Now</a>
+            <a class="btn btn-secondary" href="{% url 'contact' %}">Have Questions? Contact us!</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
