@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row d-flex">
+        <div class="col-12 col-md-6">
+            <div class="d-flex mb-4">
+                <h3>Edit Product</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <form action="{% url 'edit_product' product.id %}" class="form" method="POST" enctype="multipart/form-data">
+                {{ form|crispy }}
+                {% csrf_token %}
+                <div class="text-left">
+                    <button class="btn btn-primary" type="submit">Update Product</button>
+                    <a href="{% url 'products' %}" class="btn btn-secondary">Cancel</a> 
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
