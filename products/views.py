@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
+from django.core.paginator import Paginator
 from .models import Product, Category
 from .forms import ProductForm
 
@@ -16,6 +17,10 @@ def all_products(request):
     """
 
     products = Product.objects.all()
+    paginator = Paginator(products, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     result = None
     categories = None
     sort = None
@@ -36,11 +41,11 @@ def all_products(request):
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
-            products = products.order_by(sortkey)
+            page_obj = products.order_by(sortkey)
 
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
-            products = products.filter(category__name__in=categories)
+            page_obj = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
         if 'search' in request.GET:
@@ -52,12 +57,12 @@ def all_products(request):
 
             search_results = Q(
                 name__icontains=result) | Q(description__icontains=result)
-            products = products.filter(search_results)
+            page_obj = products.filter(search_results)
 
     current_sorting = f'{sort}_{direction}'
 
     context = {
-        'products': products,
+        'page_obj': page_obj,
         'search_term': result,
         'current_categories': categories,
         'current_sorting': current_sorting,
