@@ -54,6 +54,12 @@
                                             </span>
                                         </button>
                                     </div>
+                                    {% if request.user.is_superuser %}
+                                        <small class="ms-5">
+                                            <a href="{% url 'edit_product' product.id %}">Edit</a>
+                                            <a class="text-danger ms-2" href="{% url 'delete_product' product.id %}">Delete</a>
+                                        </small>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
