@@ -9,7 +9,7 @@
 
 <div class="container mt-4">
     <div class="row">
-        <div class="col">
+        <div class="col text-center">
             <h2>Thank You!</h2>
             <hr>
             <p>Your order information. An email will be sent to <strong>{{ order.email }}</strong> with your confirmation.</p>
@@ -81,12 +81,18 @@
                         <p class="fw-bold">Address:</p>
                     </div>
                     <div class="col-12 col-md-8 text-md-end">
-                        <p>{{ order.street_address1 }}</p>
-                        <p>{{ order.street_address2 }}</p>
-                        <p>{{ order.postcode }}</p>
-                        <p>{{ order.town_or_city }}</p>
-                        <p>{{ order.county }}</p>
-                        <p>{{ order.country }}</p>
+                            <p>{{ order.street_address1 }}</p>
+                        {% if order.street_adress2 %}
+                            <p>{{ order.street_address2 }}</p>
+                        {% endif %}
+                        {% if order.postcode %}
+                            <p>{{ order.postcode }}</p>
+                        {% endif %}
+                            <p>{{ order.town_or_city }}</p>
+                        {% if order.county %}
+                            <p>{{ order.county }}</p>
+                        {% endif %}
+                            <p>{{ order.country }}</p>
                     </div>
                 </div>
 
@@ -144,7 +150,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col text-center mt-3">
             {% if from_profile %}
                 <a href="{% url 'profile' %}" class="btn btn-primary">
                     Back To My Profile
