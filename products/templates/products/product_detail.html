@@ -3,9 +3,9 @@
 
 {% block content %}
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12 col-md-6 col-lg-4 offset-2">
-            <div class="image-container my-5">
+    <div class="row mx-auto">
+        <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+            <div class="image-container-fluid my-5">
                 {% if product.image %}
                 <a href="{{ product.image.url }}" target="_blank">
                     <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top img-fluid">
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
-            <div class="product-details-container mb-5 mt-md-5">
+            <div class="product-details-container mb-5 mt-md-5 justify-content-left">
                 <p class="mb-0">{{ product.name }}</p>
                 {% if product.category %}
                 <p class="small text-right">
