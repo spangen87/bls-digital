@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container marketing">
+
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+    <div class="col-lg-4">
+      <h2 class="fw-normal"><i class="fas fa-user-lock"></i></h2>
+      <h2 class="fw-normal">Secure Your Home</h2>
+      <p>No need to replace your mechanical lock. Your old keys will still work when needed.</p>
+      <p><a class="btn btn-secondary" href="{% url 'smart_locks' %}">Read More &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <h2 class="fw-normal"><i class="fas fa-wrench"></i></h2>
+      <h2 class="fw-normal">Easy To Install</h2>
+      <p>Anyone can install the locks with the easy manual provided. Just download the app and get going.</p>
+      <p><a class="btn btn-secondary" href="{% url 'products' %}">Shop Now &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+      <h2 class="fw-normal"><i class="fas fa-key"></i></h2>
+      <h2 class="fw-normal">Share Keys</h2>
+      <p>Share digital keys to your friends and family. You decide if it's a permanent key or one that works for a specified time.</p>
+      <p><a class="btn btn-secondary" href="{% url 'products' %}">Shop Now &raquo;</a></p>
+    </div><!-- /.col-lg-4 -->
+  </div><!-- /.row -->
+
+
+  <!-- START THE FEATURETTES -->
+
+  <hr class="featurette-divider">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading fw-normal lh-1">Clean Look. <span class="text-muted">Available In Two Colors.</span></h2>
+      <p class="lead">Choose between white/silver or black. It will blend in to most environments.
+      </p>
+    </div>
+    <div class="col-md-5">
+      <img class="img-fluid" src="{{ MEDIA_URL }}inside-door.jpg" alt="Lock on inside of a door">
+    </div>
+  </div>
+  {% endblock %}
