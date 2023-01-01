@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="container vh-100">
+        <div class="row vh-100">
+            <div class="col-7 col-md-6 my-auto">
+                <h1 class="display-4 pt-4">
+                    The page you are looking for isn't available
+                </h1>
+                <div class="my-5">
+                    <h4>
+                        <a href="{% url 'products' %}" 
+                            class="btn-primary btn btn-lg">
+                                Return to shop
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
