@@ -11,10 +11,6 @@
 
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3 class="fw-normal mb-0 text-black">Shopping Bag</h3>
-                <div>
-                    <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i
-                                class="fas fa-angle-down mt-1"></i></a></p>
-                </div>
             </div>
 
             {% if bag_items %}
@@ -23,8 +19,11 @@
                 <div class="card-body p-4">
                     <div class="row d-flex justify-content-between align-items-center">
                         <div class="col-md-2 col-lg-2 col-xl-2">
-                            <img src="{{ item.product.image.url }}" class="img-fluid rounded-3"
-                                alt="{{ item.product.name }}">
+                            {% if item.product.image %}
+                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="img-fluid rounded-3">
+                            {% else %}
+                            <img src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}" class="img-fluid rounded-3">
+                            {% endif %}
                         </div>
                         <div class="col-md-3 col-lg-3 col-xl-3">
                             <p class="lead fw-normal mb-2">{{ item.product.name }}</p>
