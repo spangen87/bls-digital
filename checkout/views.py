@@ -4,6 +4,8 @@ from django.shortcuts import (
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
@@ -14,8 +16,6 @@ from shopping_bag.contexts import bag_contents
 
 import stripe
 import json
-
-# Create your views here.
 
 
 @require_POST
@@ -78,6 +78,27 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_bag'))
             request.session['save_info'] = 'save-info' in request.POST
+            # Send confirmation email
+            cust_email = order.email
+            subject = render_to_string(
+                'checkout/confirmation_emails/confirmation_email_subject.txt',
+                {'order': order})
+            body = render_to_string(
+                'checkout/confirmation_emails/confirmation_email_body.txt',
+                {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+
+            send_mail(
+                subject,
+                body,
+                settings.DEFAULT_FROM_EMAIL,
+                [cust_email])
+
+            # Send mail to store about new order
+            store_email = settings.DEFAULT_FROM_EMAIL
+            subject = 'You got a new order!'
+            body = f'Order from: {order.full_name}. Login to admin dashboard \
+                to handle it. Order number: {order.order_number}'
+            send_mail(subject, body, store_email, [store_email])    
             return redirect(
                 reverse('checkout_success', args=[order.order_number]))
         else:
