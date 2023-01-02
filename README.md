@@ -1,9 +1,9 @@
 # BLS Digital
 
 
-Welcome to [BLS Digital](#)!
+Welcome to [BLS Digital](https://bls-digital.herokuapp.com/)!
 
-![Application on different screens](#)
+![Application on different screens](/media/readme_images/all_screens.png)
 
 ## Contents
 - [User Experience](#user-experience)
@@ -49,15 +49,15 @@ I also divided the work in two iterations so I could have goals that were more m
 Before i started with anything else I made some wireframes to guide me through the design decisions. There has been some changes along the way, but the base structure is still the same.
 
 ![Home](/media/readme_images/home.png)
-![Home](/media/readme_images/my_profile.png)
-![Home](/media/readme_images/product_detail.png)
-![Home](/media/readme_images/products.png)
-![Home](/media/readme_images/shopping_bag.png)
-![Home](/media/readme_images/checkout.png)
-![Home](/media/readme_images/sign_in.png)
-![Home](/media/readme_images/sign_up.png)
-![Home](/media/readme_images/why_smart_locks.png)
-![Home](/media/readme_images/why_contact_form.png)
+![Profile](/media/readme_images/my_profile.png)
+![Product detail](/media/readme_images/product_detail.png)
+![Products](/media/readme_images/products.png)
+![Shopping bag](/media/readme_images/shopping_bag.png)
+![Checkout](/media/readme_images/checkout.png)
+![Sign in](/media/readme_images/sign_in.png)
+![Sign up](/media/readme_images/sign_up.png)
+![Why smart locks](/media/readme_images/why_smart_locks.png)
+![Contact](/media/readme_images/contact_form.png)
 
 [Back to top](#contents)
 ### Database
@@ -160,23 +160,64 @@ When adding a product to the shopping bag a message will show in the top right c
 ![Toast](/media/readme_images/toast.png)
 
 [Back to top](#contents)
+#### Shopping Bag
+The shopping bag is displayed with a card for each product that includes the necessary information. There is also links to update the quantity of a product, and to remove it from the shopping bag. At the bottom there is summary of all the costs, followed by a button for checkout, and a button to return to the shop.
+
+![Shopping bag](/media/readme_images/shoppipng_bag_page.png)
+
+[Back to top](#contents)
+#### Checkout
+This page has a form with all the necessary fields to handle the order. The phone number field has some added validation so the user needs to enter it beginning with a country code. The required fields are marked with a star. Below these fields there is a checkbox to save the information to your profile if you are logged in. The card field is from [Stripe](https://stripe.com/).
+To the right of the form there is a summary of what the order contains. At the bottom there is a button to complete the order or to go back to the shop. There is also a summary shown how much the card will be charged.
+
+![Checkout](/media/readme_images/checkout_page.png)
+
+[Back to top](#contents)
+#### Checkout Success
+This page shows that order was created successfully with a summary of the order. A toast also appears telling it was successfull. An email is sent out to the user with a confirmation, and also an email to the store owner notifying there is a new order to handle. 
+
+![Checkout success](/media/readme_images/checkout_success.png)
+
+[Back to top](#contents)
+### Existing Features For Logged In User
+#### My Profile
+As a logged in regular user you have the ability to edit your default shipping details and to view your order history.
+You can aldso click the link on the order to view the complete order confirmation. A toast will then tell it's a historic order confirmation and not a new one.
+
+![My profile](/media/readme_images/my_profile.png)
+
+[Back to top](#contents)
 ### Existing Features For Store Owners
 #### Add, delete and edit products
+When you are logged in as a store owner (superuser) you have the ability to add new products to the store from the front end, edit existing products and deleting products.
 
+![Products as super user](/media/readme_images/products_as_superuser.png)
+
+On the product page you have two new links. One for editing the product, and one for deleting. If you delete a product a alert will show and you have to confirm.
+
+![Product detail as super user](/media/readme_images/product_detail_superuser.png)
+
+Same function as above on the product detail page.
+
+![Add product](/media/readme_images/add_product.png)
+
+When you click on account as a store owner you have an additional option, Manage Products. That will lead to this form for adding a new product to the store.
 
 [Back to top](#contents)
 #### Mark Order As Shipped
+When logged in to the admin panel I have added a boolean field "Order shipped". This will make it easier as a store owner to keep track of which order that is left to handle.
 
-
-[Back to top](#contents)
-#### All Reviews
-
+![Order shipped](/media/readme_images/admin_orders.png)
 
 [Back to top](#contents)
 ### Future Features
 - Add discount cuopons would be a nice feature to have in the future.
--
-
+- Handling of the stock would be needed for live use of the store.
+- FAQ page to avoid unecessary emails with questions.
+- Privacy policy would be needed for the shop to be live.
+- Reviews and rating would be a nice feature to add in the future.
+- Add more payment options.
+- Logging in with social media accounts.
 
 [Back to top](#contents)
 ## Technologies Used
@@ -200,16 +241,18 @@ When adding a product to the shopping bag a message will show in the top right c
 - [JSHint Validation](https://jshint.com/) - Used to validate JavaScript code.
 - [drawSQL](https://drawsql.app/) - Used to draw the database schema.
 - [Colormind](http://colormind.io/bootstrap/) - Used to chose colors.
+- [ElephantSQL](https://www.elephantsql.com/) - Database used in the project.
 
 [Back to top](#contents)
 ### Libraries
 The following libraries are used in the project and are located in the requirements.txt file.
 
+![Requirements](/media/readme_images/requirements.png)
 
 [Back to top](#contents)
 ## Testing
 ### Validator Testing
-Locksmith Booking have been tested by using validation tools for HTML, CSS, JavaScript and Python.
+BLS Digital have been tested by using validation tools for HTML, CSS, JavaScript and Python.
 - [W3C HTML Validator](https://validator.w3.org/)
 - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 - [JSHint JavaScript Validator](https://jshint.com/)
