@@ -14,11 +14,11 @@ def contact(request):
         if form.is_valid():
             # Send the email and redirect to a thank you page
             name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
+            from_email = form.cleaned_data['email']
             message = form.cleaned_data['message']
             recipient = settings.DEFAULT_FROM_EMAIL
-            subject = f'BLS Digital contact form: {name}'
-            send_mail(subject, message, email, [recipient])
+            subject = f'BLS Digital contact form: {name}, {from_email}'
+            send_mail(subject, message, from_email, [recipient])
             return redirect('thank_you')
     else:
         form = ContactForm()
