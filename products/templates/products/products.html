@@ -66,7 +66,8 @@
                                                     {% if request.user.is_superuser %}
                                                         <small class="mx-3">
                                                             <a href="{% url 'edit_product' product.id %}">Edit</a>
-                                                            <a class="text-danger ms-2" href="{% url 'delete_product' product.id %}">Delete</a>
+                                                            <a class="text-danger ms-2" href="{% url 'delete_product' product.id %}" 
+                                                                onclick="return confirm('Are you sure you want to delete? This can not be undone.')">Delete</a>
                                                         </small>
                                                     {% endif %}
                                                     <a href="{% url 'product_detail' product.id %}" class="btn btn-secondary">Read More</a>
