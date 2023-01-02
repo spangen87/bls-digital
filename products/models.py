@@ -1,4 +1,6 @@
 from django.db import models
+from decimal import Decimal
+from django.core.validators import MinValueValidator
 
 
 class Category(models.Model):
@@ -35,7 +37,9 @@ class Product(models.Model):
         blank=True,
         help_text='In grams. No decimals.'
         )
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(
+        max_digits=6, decimal_places=2,
+        validators=[MinValueValidator(Decimal('0.01'))])
     description = models.TextField()
     origin = models.CharField(max_length=254, null=True, blank=True)
     document_url = models.URLField(
