@@ -61,55 +61,103 @@ Before i started with anything else I made some wireframes to guide me through t
 
 [Back to top](#contents)
 ### Database
+For this project I used a free database called [ElephantSQL](https://www.elephantsql.com/).
+More about how to set that up in the deployment section.
 
+There is five models in the database that I have created, along with a number that comes with Django from start.
+- Products. A model for all the product details needed for a product.
+- Category. Complements the product model and makes it possible to sort the products in to categories.
+- UserProfile. Gives logged in user the possibility to save their delivery information and have it pre filled to the next time.
+- Order. Stores all the order information. This is also presented to logged in user in their profile page.
+
+Alot in these models comes from Boutique Ado Walkthrough Project at Code Institute. But I have made some changes to the models to suit my need better. Their is also some more validation and help texts added where needed.
+
+![Database](/media/readme_images/database_schema.png)
 
 [Back to top](#contents)
 ### Design
 #### Typography
-
+For this project I decided to stick with the standard font provided from bootstrap. I thought it looked like I wanted so there was no need to change it.
 
 #### Colors
+The colors used is combination of three main color. Two darker ones and a lighter one that is used as background on the page. I wanted a dark forest green look, so I chossed a color I liked and then used [Colormind](http://colormind.io/bootstrap/) to pick some matching colors.
 
-
-![Colors](#)
+![Colors](/media/readme_images/colors.png)
 
 [Back to top](#contents)
 ## Features
 ### Existing Features For All Users
 #### Navigation Bar
+Here I wanted clear and simplistic look. A small logo to the left followed by some menu links. Products and Account have dropdowns for further menu choices.
+To the right there is a search bar, followed by a link to the shopping bag. The shopping bag have a badge the quantity of ptoducts in the shopping bag. Below that there is a summary of the total amount in the shopping bag.
 
+The search bar searches in the product name and in the description. With this amount of products it is not absolutely necessary, but it is a nice feature to have if there more products added to the shop. 
+
+![Navbar](/media/readme_images/navbar.png)
 
 [Back to top](#contents)
 #### Home
+When visiting the home page I wanted something clean but at the same time something that could sell. So i decided to go with a slideshow at the top with three pictures rotating. A mix of environment pictures and a made up "mechanical lock" that looks digital. Each slide have a diffrent quote with a link to the shop beneath. The quotes are hidden on smaller screens because it would not look good.
 
+Beneath the slides there is three headings with icons. They have some short USPs and link to read more or to enter the shop.
 
-[Back to top](#contents)
-#### About
+Without scrolling further you get a picture of what the store sells and what kind of products that is offered.
 
+![Home 1](/media/readme_images/home_1.png)
+
+If you scroll down the page there is a nice picture of one of products on a door. It give a little bit of a luxury feeling around the product. To the left of the image there is a heading in two colors that shows that the product is available in two colors.
+
+![Home 2](/media/readme_images/home_2.png)
 
 [Back to top](#contents)
 #### Footer
+The footer have a copyright, a small logo and a form to subscribe to the newsletter. The newsletter form is connected to my mailchimp so emails entered there will be saved. 
 
-
-![Footer](#)
-
-[Back to top](#contents)
-#### Login Page
-
-
-![Login](#)
+![Footer](/media/readme_images/footer.png)
 
 [Back to top](#contents)
-#### Sign Up Page
+#### Products
+The products are divided in to three columns. Showing the picture, price, category, name and a link to the details page. It is possible to sort by name, category or price. There is not much use for this now, but it makes the shop future prof if there are more products added. There is also a pagination if there is more than six products.
 
-
-![Sign up](#)
+![Products](/media/readme_images/product_page.png)
 
 [Back to top](#contents)
-#### Custom 404 Page
+#### Product Detail
+This page shows a picture of the product, description, name, category and price. Then there is a option to choose quantity before adding it to the shopping bag. There is also a link back to the product list.
 
+![Product detail](/media/readme_images/product_detail_page.png)
 
-![404](#)
+[Back to top](#contents)
+#### Why Smart Locks?
+This page gives some further information about smart locks and their benefits with a link to the contact page if there is some questions.
+In a real business I think it should be a bigger page with more unique selling points and more information.
+
+![Why smart locks](/media/readme_images/why_smart_locks_page.png)
+
+[Back to top](#contents)
+#### Contact
+This page has a contact form that will send an email to the store owner. When submitted succesfully a message will show that confirms that mail have been sent.
+
+![Contact form](/media/readme_images/contact_page.png)
+![Thank you message](/media/readme_images/thank_you.png)
+
+[Back to top](#contents)
+#### Sign In
+The sign in page is a standard page from allauth with some styling added to it.
+
+![Sign in](/media/readme_images/sign_in_page.png)
+
+[Back to top](#contents)
+#### Sign Up
+The sign up page have the same styling as the sign in page. The email confirmation is active so the user would need to enter a real email address. The form checks that the password is long enough and not too common. The username and email also has to be unique.
+
+![Sign up](/media/readme_images/sign_up_page.png)
+
+[Back to top](#contents)
+#### Toasts
+When adding a product to the shopping bag a message will show in the top right corner. This message is from bootstrap and is called a toast. If there is a error or other success message it will also show there, but without the shopping bag summary. This is so the user always knows what is happening.
+
+![Toast](/media/readme_images/toast.png)
 
 [Back to top](#contents)
 ### Existing Features For Store Owners
@@ -144,13 +192,14 @@ Before i started with anything else I made some wireframes to guide me through t
 - [GitBash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) - Terminal used to push changes to the GitHub repository.
 - [Google Chrome DevTools](https://developer.chrome.com/docs/devtools/) - Used to test responsiveness and debug.
 - [Balsamiq](https://balsamiq.com/) - Used to create the wireframes for the project.
-- [Cloudinary](https://cloudinary.com/) - Used to host all static files and images.
+- [Amazon AWS](https://aws.amazon.com/) - Used to host all static files and images.
 - [Heroku](https://dashboard.heroku.com) - Used to deploy the website.
 - [PEP8 Validation](http://pep8online.com/) - Used to validate Python code.
 - [HTML Validation](https://validator.w3.org/) - Used to validate HTML code.
 - [CSS Validation](https://jigsaw.w3.org/css-validator/) - Used to validate CSS code.
 - [JSHint Validation](https://jshint.com/) - Used to validate JavaScript code.
 - [drawSQL](https://drawsql.app/) - Used to draw the database schema.
+- [Colormind](http://colormind.io/bootstrap/) - Used to chose colors.
 
 [Back to top](#contents)
 ### Libraries
@@ -216,14 +265,16 @@ Test for responsiveness was made with [Google Chrome DevTools](https://developer
 - When clicking on a category link under products, the products in that category won't show.
 I solved this one by adding a split by "," to the category in the views.
 
-- When sorting by name it throws an error saying that Lower is not defined.
+- Submitting checkout form without country code on the phone number throws an error instead of a message.
+This took me several hours, including a couple with tutor support. In the end it was an easy fix. It was a block that was indented wrong and inside an if-statement.
+
+- Delivery costs become 34$ instead of 5$ after checkout.
+I had made a mistake in the calculation of the grand total. It was total + total + delivery. The issue were fixed by removing one of the totals.
 
 [Back to top](#contents)
 ### Left to Solve
-- When clicking on a category link under products, the products in that category won't show.
-- When sorting by name it throws an error saying that Lower is not defined.
-- Submitting checkout form without country code on the phone number throws an error instead of a message.
-- Delivery costs become 34$ instead of 5$ after checkout.
+
+
 
 [Back to top](#contents)
 ## Deployment
