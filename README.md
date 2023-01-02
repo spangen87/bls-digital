@@ -59,11 +59,11 @@ Before i started with anything else I made some wireframes to guide me through t
 ![Home](/media/readme_images/why_smart_locks.png)
 ![Home](/media/readme_images/why_contact_form.png)
 
-
+[Back to top](#contents)
 ### Database
 
 
-
+[Back to top](#contents)
 ### Design
 #### Typography
 

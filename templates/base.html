@@ -80,10 +80,10 @@
                 aria-expanded="false">Account</a>
               <div class="dropdown-menu">
                 {% if request.user.is_authenticated %}
-                  {% if request.user.is_superuser %}
-                  <a class="dropdown-item" href="{% url 'add_product' %}">Manage Products</a>
-                  <div class="dropdown-divider"></div>
-                  {% endif %}
+                {% if request.user.is_superuser %}
+                <a class="dropdown-item" href="{% url 'add_product' %}">Manage Products</a>
+                <div class="dropdown-divider"></div>
+                {% endif %}
                 <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
                 <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
                 {% else %}
@@ -105,9 +105,9 @@
                 {% endif %}
                 <p class="text-small text-muted">
                   {% if bag_items %}
-                    ${{ grand_total|floatformat:2 }}
+                  ${{ grand_total|floatformat:2 }}
                   {% else %}
-                    $0.00
+                  $0.00
                   {% endif %}
                 </p>
               </a>
@@ -121,17 +121,17 @@
   {% if messages %}
   <div class="message-container">
     {% for message in messages %}
-      {% with message.level as level %}
-        {% if level == 40 %}
-          {% include 'includes/toasts/toast_error.html' %}
-        {% elif level == 30 %}
-          {% include 'includes/toasts/toast_warning.html' %}
-        {% elif level == 25 %}
-          {% include 'includes/toasts/toast_success.html' %}
-        {% else %}
-          {% include 'includes/toasts/toast_info.html' %}
-        {% endif %}
-      {% endwith %} 
+    {% with message.level as level %}
+    {% if level == 40 %}
+    {% include 'includes/toasts/toast_error.html' %}
+    {% elif level == 30 %}
+    {% include 'includes/toasts/toast_warning.html' %}
+    {% elif level == 25 %}
+    {% include 'includes/toasts/toast_success.html' %}
+    {% else %}
+    {% include 'includes/toasts/toast_info.html' %}
+    {% endif %}
+    {% endwith %}
     {% endfor %}
   </div>
   {% endif %}
@@ -146,86 +146,36 @@
     <i class="fas fa-arrow-up"></i>
   </a>
   <footer class="container py-5">
-    <div class="row">
-      <div class="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-        </ul>
-      </div>
-
-      <div class="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-        </ul>
-      </div>
-
-      <div class="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-        </ul>
-      </div>
-
-      <div class="col-md-5 offset-md-1 mb-3">
-        <!-- Mailchimp newsletter form -->
-        <form
-          action="https://bestlas.us11.list-manage.com/subscribe/post?u=f1abfa798414594fad30c45fb&amp;id=90d85852b4&amp;f_id=009f9ae0f0"
-          method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
-          target="_blank" novalidate>
-          <h5>Subscribe to our newsletter</h5>
-          <p>Get news and special offers directly to your inbox.</p>
-          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-            <label for="mce-EMAIL" class="visually-hidden">Email address</label>
-            <input id="mce-EMAIL" name="EMAIL" type="email" class="form-control" placeholder="Email address">
-            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
-          </div>
-          <div id="mce-responses" class="clear foot">
-            <div class="response" id="mce-error-response" style="display:none"></div>
-            <div class="response" id="mce-success-response" style="display:none"></div>
-          </div>
-          <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
-              name="b_f1abfa798414594fad30c45fb_90d85852b4" tabindex="-1" value=""></div>
-      </div>
+    <div class="d-flex flex-column flex-md-row justify-content-between py-4 my-4 border-top">
+      <form
+        action="https://bestlas.us11.list-manage.com/subscribe/post?u=f1abfa798414594fad30c45fb&amp;id=90d85852b4&amp;f_id=009f9ae0f0"
+        method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank"
+        novalidate>
+        <h5>Subscribe to our newsletter</h5>
+        <p>Get news and special offers directly to your inbox.</p>
+        <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+          <label for="mce-EMAIL" class="visually-hidden">Email address</label>
+          <input id="mce-EMAIL" name="EMAIL" type="email" class="form-control" placeholder="Email address">
+          <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+        </div>
+        <div id="mce-responses" class="clear foot">
+          <div class="response" id="mce-error-response" style="display:none"></div>
+          <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>
+        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
+            name="b_f1abfa798414594fad30c45fb_90d85852b4" tabindex="-1" value=""></div>
       </form>
-    </div>
-    </div>
-
-    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-      <p>© 2022 BLS Digital. All rights reserved.</p>
-      <ul class="list-unstyled d-flex">
-        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
-              <use xlink:href="#twitter"></use>
-            </svg></a></li>
-        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
-              <use xlink:href="#instagram"></use>
-            </svg></a></li>
-        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24">
-              <use xlink:href="#facebook"></use>
-            </svg></a></li>
-      </ul>
+      <a href="{% url 'home' %}"><img class="logo mt-2" src="{{ MEDIA_URL }}logo.png" alt="Logo" style="width: 280px;"></a>
+      <p class="mt-2">© 2022 BLS Digital. All rights reserved.</p>
     </div>
   </footer>
 
   {% block postloadjs %}
   <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function () {
       $('.toast').toast('show');
-      });
+    });
   </script>
   {% endblock %}
 
@@ -251,8 +201,8 @@
     var $mcj = jQuery.noConflict(true);
   </script>
   <script type="text/javascript">
-    $('.btn-back-to-top').click(function(e) {
-    window.scrollTo(0,0)
+    $('.btn-back-to-top').click(function (e) {
+      window.scrollTo(0, 0)
     });
   </script>
 
