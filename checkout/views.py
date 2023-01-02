@@ -98,7 +98,7 @@ def checkout(request):
             subject = 'You got a new order!'
             body = f'Order from: {order.full_name}. Login to admin dashboard \
                 to handle it. Order number: {order.order_number}'
-            send_mail(subject, body, store_email, [store_email])    
+            send_mail(subject, body, store_email, [store_email])
             return redirect(
                 reverse('checkout_success', args=[order.order_number]))
         else:

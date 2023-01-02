@@ -33,7 +33,7 @@ Welcome to [BLS Digital](#)!
 ### User Stories
 #### Site User
 
-#### Staff Memmber
+#### Staff Member
 
 
 [Back to top](#contents)
@@ -101,12 +101,12 @@ Welcome to [BLS Digital](#)!
 ![404](#)
 
 [Back to top](#contents)
-### Existing Features For Staff Memebers
-#### All Bookings
+### Existing Features For Store Owners
+#### Add, delete and edit products
 
 
 [Back to top](#contents)
-#### All Users
+#### Mark Order As Shipped
 
 
 [Back to top](#contents)
@@ -115,6 +115,8 @@ Welcome to [BLS Digital](#)!
 
 [Back to top](#contents)
 ### Future Features
+- Add discount cuopons would be a nice feature to have in the future.
+-
 
 
 [Back to top](#contents)

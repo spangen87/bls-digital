@@ -40,6 +40,7 @@ class OrderAdmin(admin.ModelAdmin):
         'grand_total',
         'original_bag',
         'stripe_pid',
+        'order_shipped',
         )
 
     list_display = (
@@ -47,6 +48,7 @@ class OrderAdmin(admin.ModelAdmin):
         'date',
         'full_name',
         'grand_total',
+        'order_shipped',
     )
 
     ordering = ('-date',)
