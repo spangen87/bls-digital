@@ -31,22 +31,33 @@ Welcome to [BLS Digital](#)!
 
 ## User Experience
 ### User Stories
-#### Site User
-
-#### Staff Member
-
+![Screenshot of all user stories](/media/readme_images/user_stories.png)
 
 [Back to top](#contents)
 ### Agile Methodology
 #### GitHub Project Board
+GitHubs Projects is used in this project to keep track of the user stories that is done, ongoing and not started yet.
+It has been a big help to go there and get a overlook of what has been done and what is left when it has been tough.
+When you work in a team i think this will be an even bigger help.
 
+I also divided the work in two iterations so I could have goals that were more manageable.
 
-![Screenshot of project board](#)
-
+![Screenshot of project board](/media/readme_images/project_board.png)
 
 [Back to top](#contents)
 ### Wireframes
+Before i started with anything else I made some wireframes to guide me through the design decisions. There has been some changes along the way, but the base structure is still the same.
 
+![Home](/media/readme_images/home.png)
+![Home](/media/readme_images/my_profile.png)
+![Home](/media/readme_images/product_detail.png)
+![Home](/media/readme_images/products.png)
+![Home](/media/readme_images/shopping_bag.png)
+![Home](/media/readme_images/checkout.png)
+![Home](/media/readme_images/sign_in.png)
+![Home](/media/readme_images/sign_up.png)
+![Home](/media/readme_images/why_smart_locks.png)
+![Home](/media/readme_images/why_contact_form.png)
 
 
 ### Database
