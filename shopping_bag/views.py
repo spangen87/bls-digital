@@ -41,7 +41,12 @@ def adjust_bag(request, item_id):
     From Boutique Ado walkthrough
     """
     product = get_object_or_404(Product, pk=item_id)
-    quantity = int(request.POST.get('quantity'))
+    quantity = request.POST.get('quantity')
+    if quantity.isdigit():
+        quantity = int(request.POST.get('quantity'))
+    else:
+        messages.error(request, 'Please check that you entered a valid input')
+        return redirect(reverse('view_shopping_bag'))
     bag = request.session.get('bag', {})
 
     if quantity > 0:
