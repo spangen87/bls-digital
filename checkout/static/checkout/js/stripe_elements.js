@@ -4,7 +4,7 @@
 var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 var clientSecret = $('#id_client_secret').text().slice(1, -1);
 var stripe = Stripe(stripePublicKey);
-var elements = stripe.elements()
+var elements = stripe.elements();
 var style = {
   base: {
     color: "#151419",
@@ -117,5 +117,5 @@ form.addEventListener('submit', function (ev) {
   }).fail(function() {
     // Reload the page if there is an error
     location.reload();
-  })
+  });
 });

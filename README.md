@@ -163,7 +163,7 @@ When adding a product to the shopping bag a message will show in the top right c
 #### Shopping Bag
 The shopping bag is displayed with a card for each product that includes the necessary information. There is also links to update the quantity of a product, and to remove it from the shopping bag. At the bottom there is summary of all the costs, followed by a button for checkout, and a button to return to the shop.
 
-![Shopping bag](/media/readme_images/shoppipng_bag_page.png)
+![Shopping bag](/media/readme_images/shopping_bag_page.png)
 
 [Back to top](#contents)
 #### Checkout
@@ -184,7 +184,7 @@ This page shows that order was created successfully with a summary of the order.
 As a logged in regular user you have the ability to edit your default shipping details and to view your order history.
 You can aldso click the link on the order to view the complete order confirmation. A toast will then tell it's a historic order confirmation and not a new one.
 
-![My profile](/media/readme_images/my_profile.png)
+![My profile](/media/readme_images/my_profile_page.png)
 
 [Back to top](#contents)
 ### Existing Features For Store Owners
@@ -258,16 +258,25 @@ BLS Digital have been tested by using validation tools for HTML, CSS, JavaScript
 - [JSHint JavaScript Validator](https://jshint.com/)
 
 #### HTML Validation
-![HTML](#)
+The validations shows no error, but a couple of warnings. I chose to ignore them because the type="text/javascript" attribute is used through the education.
+All pages are tested but with the same result, so I decided to only have one screenshot.
+
+![HTML](/media/readme_images/html_home.png)
 
 #### CSS Validation
-![CSS](#)
+No errors showed in the CSS validation. Here I copied the CSS in to the validator. If I put in the link it showed alot of warnings and errors because of Bootstraps CSS.
+
+![CSS](/media/readme_images/css.png)
 
 #### JavaScript Validation
-![JS](#)
+The validation says it has one undefined variable, Stripe. But that comes from another script. Besides that there is no errors or warnings.
+
+![JS](/media/readme_images/js.png)
 
 #### Python Validation
-![Python](#)
+There was some warnings about too long lines, and a couple of typos that is now taken care of. I'm not sure how show this in the best way, but the warnings that is left is in files that I have not created myself.
+
+![Python](/media/readme_images/python.png)
 
 [Back to top](#contents)
 ### Lighthouse Testing
@@ -275,28 +284,56 @@ The application has been tested with Chrome Dev Tools Lighthouse Testing which t
 - Performance
 - Accessibility
 - Best Practices
-- SEO 
+- SEO
 
 #### Home page
-![Home](#)
+![Home](/media/readme_images/lighthouse_home.png)
 
-#### About Page
-![About](#)
+Home page on desktop. This looks good and I have no comments to add.
 
+![Home mobile](/media/readme_images/lighthouse_home_mobile.png)
+
+Performance a little lower on mobile devices as expected.
+
+#### Product Page
+![Products](/media/readme_images/lighthouse_products.png)
+
+There is alot of pictures to render on this page so it is expected to have a little longer loading time. The reason for the lower SEO score is that all the product cards have the same link "Read More".
+
+![Products](/media/readme_images/lighthouse_products_mobile.png)
+
+The same nreasons here as above.
+
+The other pages are showing similar results as the home page, or better performance in most cases. I chose to show these two pages because they are the heaviest ones.
 
 [Back to top](#contents)
 ### Accessibility Testing
 I checked so the contrast was enough on the site using [a11y](https://color.a11y.com/Contrast/).
 
-![Contrast](#)
+There was was one issue, which I ignored. That because it is a decorative text that has no important information. The purpose of that text is to show that the locks comes in two colors.
+
+The color combinations used through the site in text, buttons and background has no issues.
+
+![Contrast](/media/readme_images/contrast.png)
 
 [Back to top](#contents)
 ### Responsiveness Testing
 Test for responsiveness was made with [Google Chrome DevTools](https://developer.chrome.com/docs/devtools/).
 
+This has been tested through the development on smaller devices to make sure it looks good. For the most part it looks good and works as it should, but there is room for improvement in the header section on mobile devices. 
+
 [Back to top](#contents)
 ### Browser Testing
+Browser testing has been done manually. 
 
+Desktop:
+- Chrome: Used in development, no known issues.
+- Firefox: No known issues.
+- Edge: No known issues.
+
+Mobile:
+- Chrome: No known issues.
+- Safari: No known issues.
 
 [Back to top](#contents)
 ### Manual testing
@@ -316,8 +353,7 @@ I had made a mistake in the calculation of the grand total. It was total + total
 
 [Back to top](#contents)
 ### Left to Solve
-
-
+There is no known bugs left to solve.
 
 [Back to top](#contents)
 ## Deployment

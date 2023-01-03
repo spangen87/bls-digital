@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://bls-digital.herokuapp.com/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/?category=smart_home_locks</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/?category=accessories</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/?category=smart_lock_kit</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/?category=smart_padlocks</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/smart_locks/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/contact/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/accounts/login/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/shopping_bag/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/?sort=category&amp;direction=asc</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/?sort=price&amp;direction=asc</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/?sort=name&amp;direction=asc</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/1/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/2/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/4/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/5/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/3/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/6/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/7/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/8/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/?page=2</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://bls-digital.herokuapp.com/products/?page=1</loc>
+  <lastmod>2023-01-03T00:03:52+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>

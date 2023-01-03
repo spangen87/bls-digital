@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /shopping_bag/
+Disallow: /profile/
+Disallow: /products/add/
+Disallow: /checkout/
+Sitemap: https://bls-digital.herokuapp.com//sitemap.xml

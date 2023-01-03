@@ -71,7 +71,7 @@ def checkout(request):
                         )
                         order_line_item.save()
                 except Product.DoesNotExist:
-                    messsage.error(request, (
+                    messages.error(request, (
                         'One of the products was not found.'
                         'Contact us for assistance.'
                     ))
