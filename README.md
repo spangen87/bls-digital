@@ -10,7 +10,8 @@ Welcome to [BLS Digital](https://bls-digital.herokuapp.com/)!
 - [User Experience](#user-experience)
     - [User Stories](#user-stories)
     - [Agile Methodology](#agile-methodology)
-    - [Wireframes/Flowchart](#wireframesflowchart)
+    - [Wireframes](#wireframes)
+    - [Database](#database)
     - [Design](#design)
 - [Marketing](#marketing)
 - [Features](#features)
@@ -71,6 +72,7 @@ There is five models in the database that I have created, along with a number th
 - Category. Complements the product model and makes it possible to sort the products in to categories.
 - UserProfile. Gives logged in user the possibility to save their delivery information and have it pre filled to the next time.
 - Order. Stores all the order information. This is also presented to logged in user in their profile page.
+- OrderLineItems. Stores the products on the order and keep track of the quantity of each product.
 
 Alot in these models comes from Boutique Ado Walkthrough Project at Code Institute. But I have made some changes to the models to suit my need better. Their is also some more validation and help texts added where needed.
 
@@ -110,9 +112,9 @@ A Facebook page is created for this e-commerce store. I will only provide a scre
 ### Existing Features For All Users
 #### Navigation Bar
 Here I wanted clear and simplistic look. A small logo to the left followed by some menu links. Products and Account have dropdowns for further menu choices.
-To the right there is a search bar, followed by a link to the shopping bag. The shopping bag have a badge the quantity of ptoducts in the shopping bag. Below that there is a summary of the total amount in the shopping bag.
+To the right there is a search bar, followed by a link to the shopping bag. The shopping bag have a badge the quantity of products in the shopping bag. Below that there is a summary of the total amount in the shopping bag.
 
-The search bar searches in the product name and in the description. With this amount of products it is not absolutely necessary, but it is a nice feature to have if there more products added to the shop. 
+The search bar searches in the product name and in the description. With this amount of products it is not absolutely necessary, but it is a nice feature to have if there are more products added to the shop. 
 
 ![Navbar](/media/readme_images/navbar.png)
 
@@ -358,7 +360,149 @@ Mobile:
 
 [Back to top](#contents)
 ### Manual testing
+A lot of testing has been done throughout the development. Here follows a summary of all the tested functionality.
 
+[Back to top](#contents)
+#### Home
+##### Expected
+All links should work. And the search bar accessed in the navbar should work and give a message if you try without entering any characters. The sign up form for newsletter in the footer should work, and should not submit if it is something other than an email enetred.
+
+##### Outcome
+- All links works as expected.
+- Newsletter form only accepts a submit when it is a email.
+- Empty search gives a error message.
+
+![Search](/media/readme_images/empty_search.png)
+
+[Back to top](#contents)
+#### Products
+##### Expected
+- All products shows.
+- Sorting works.
+- All links works properly.
+- Product cards are showing the expected information.
+- Pagination functionality.
+
+##### Outcome
+- All products displays as expected, with the information it should.
+- All the links works as expected.
+- Sorting works.
+- Pagination works properly when all products are shown, but not when you are sorting products or showing a search result. This will be a wont fix at the moment. The pagination is just there for future use, and is not necessary with this amount of products.
+
+[Back to top](#contents)
+#### Product Detail
+##### Expected
+- Information is rendering properly.
+- All links works.
+- Add to shopping bag function works, and the quantity picker adds the correct quantity to the shopping bag.
+
+##### Outcome
+- Information is showing as expected.
+- All links works.
+- Add to shopping bag work, and the correct quantity is added.
+- If you enter a invalid number manually in the quantity field the validation works and will not add it to the shopping bag.
+
+![Search](/media/readme_images/product_detail_message.png)
+
+[Back to top](#contents)
+#### Why Smart Locks?
+##### Expected
+- Links should work and pictures should show properly.
+
+##### Outcome
+- Everything works as expexted.
+
+[Back to top](#contents)
+#### Contact
+##### Expected
+- The form should submit and send an email to the store owner.
+- The form should only submit if it is filled out with valid information.
+
+##### Outcome
+- The form sends an email including the name, email and the message.
+- The validation works. See pictures below.
+
+![Invalid email](/media/readme_images/contact_invalid_email.png)
+
+![Spaces](/media/readme_images/contact_spaces.png)
+
+[Back to top](#contents)
+#### Shopping Bag
+##### Expected
+- Information and pictures shows properly.
+- You can change quantity in the bag of a product and validation works.
+- Calculations are correct.
+- Links works.
+
+##### Outcome
+- Everything renders as it should.
+- Calculations are correct and adds the correct delivery cost if any.
+- Links works.
+- Quantity can be changed with no issues. If you enter an invalid quantity, for example 3,5, an error will show. See picture below.
+
+![Invalid input](/media/readme_images/shopping_bag_invalid.png)
+
+[Back to top](#contents)
+#### Checkout
+##### Expected
+- Show a correct order summary.
+- All form fields works properly. And the required fields are marked with a star.
+- The card field from Stripe works and gives error messages when card details are not correct.
+- The form does not submit and does not throw an error 500 when there is invalid information.
+- After successfull order you are redirected to order success page.
+
+##### Outcome
+- Order summary shows properly.
+- All fields works as expected.
+- The card field works as expected and gives error messages when needed. See picture as example.
+
+![Invalid card](/media/readme_images/checkout_card_error.png)
+
+![Invalid card](/media/readme_images/checkout_card_error2.png)
+
+- When the other form fields are invalid, an other message is shown. See picture below.
+
+![Invalid card](/media/readme_images/checkout_form_error.png)
+
+- After successfull checkout you are redirected to the success page. Picture below. An email confirmation is also sent to customer as expected, and also a notification email to the store owner.
+
+![Success](/media/readme_images/order_success.png)
+
+[Back to top](#contents)
+#### My Profile
+##### Expected
+- Render the form and show the order history correctly.
+- Form have same fields as in the checkout and validation works.
+- Update of information works and links on order history works.
+
+##### Outcome
+- The form and order history shows the correct information. It works to save the information from the checkout page when you are logged in, and also pre fill the form if you have saved details in the profile already.
+- Update information works as expected and gives a message that it is updated. Order history links works for showing the complete order, with a message notifying it is not a new order. See pictures below.
+
+![Order history](/media/readme_images/order_history.png)
+![Profile update](/media/readme_images/profile_update.png)
+
+- Validation on form fields works as it should. See picture below.
+
+![Profile validation](/media/readme_images/profile_validation.png)
+
+[Back to top](#contents)
+#### Manage Products
+##### Expected
+- Page only accesible for superusers.
+- You can add a product with image.
+- Price can not be 0 or negative.
+- SKU must be unique.
+
+##### Outcome
+- Page is only accessible for superusers. When not, you are redirected to the sign in page.
+
+![Access denied](/media/readme_images/access_add_product.png)
+
+- Adding a product with image works as it should.
+- Validation of price and unique SKU works as it should.
+
+![Add product validation](/media/readme_images/add_product_validation.png)
 
 [Back to top](#contents)
 ## Bugs
@@ -471,7 +615,7 @@ The steps for doing this:
 2. On the top right there is a button called Fork.
 3. Press the Fork button to make a copy to your account.
 
-![Image showing how to fork](#)
+![Image showing how to fork](/media/readme_images/github-fork.jpg)
 
 [Back to top](#contents)
 ### How to clone the project
@@ -481,24 +625,43 @@ This is how you make a clone of the repository:
 2. Then click on "Code" button to the right above the files listed.
 3. Click on the clipboard icon to copy the URL.
 
-![Imge that shows where to find the URL for cloning](#)
+![Imge that shows where to find the URL for cloning](/media/readme_images/github-clone.jpg)
 
 4. Open Git Bash in the IDE of your choice.
 5. Change the working directory to where you want your cloned directory.
 6. Type `git clone` and then paste the URL that you copied.
 7. Press enter and clone has been finished.
 
+- Now it is time to install project requirements needed to run the project. In the terminal, type the following command: 
+    - ```pip3 install -r requirements.txt```<br/>
+
+- This will download all the necessary dependencies stated in the requirements.txt file which will enable the project to work.
+
+- Now we create our env.py file which tells our project which variables to use. These variables are usually hidden for security purposes so make sure to not publicly share your .env file. Add the file to a .gitignore so it does not appear on github if you are using that.
+
+- Type the command ```python manage.py makemigrations``` followed by ```python manage.py migrate```. This will apply all the migrations necessary for the project to work.
+
+- After all the migrations have been successfully made, type the command ```python manage.py runserver```.
+
+- This will launch the project locally and is ready for development.
+
 [Back to top](#contents)
 ## Credits
 ### Content
 - [Bootstrap](https://getbootstrap.com/) is used alot in this project when adding the design to the front end.
+- Boutique Ado Walktrhrough from [Code Institute](https://codeinstitute.net/). Alot that we did in the walkthrough are also in this project with some changes when needed.
+- The slideshow and base structure for the home page comes from [Bootstrap Examples](https://getbootstrap.com/docs/5.0/examples/).
 
 [Back to top](#contents)
 ### Media
-
+- Images and product description comes from [tedee](https://tedee.com/).
+- Images were compressed using [TinyJPG](https://tinyjpg.com/).
+- The images that I have edited were done in [Adobe Photoshop](https://www.adobe.com/se/products/photoshop.html?tt=emea1224).
 
 [Back to top](#contents)
 ## Acknowledgements
+This project was made as Portfolio Project 5 in the Full Stack Software Deevelopment education from [Code Institute](https://codeinstitute.net/).
+I would like to thank my mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/), tutors from Tutor Support, the slack community at [Code Institute](https://codeinstitute.net/) for the help and support during this project. I also would like to thank my colleagues Daniel and Järker at [Best Las](https://bestlas.se/) for giving me the opportunity and time to do this education. It has been more intense then I could imagine, but also more fun and rewarding!
 
-
+Rikard Spångmyr, 2023.
 [Back to top](#contents)
