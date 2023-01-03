@@ -1,5 +1,6 @@
 # BLS Digital
-
+A security online store that focuses on smart digital locks for your home, rentals and small businesses.
+This site does not take real orders, but a version of it probably will in the future.
 
 Welcome to [BLS Digital](https://bls-digital.herokuapp.com/)!
 
@@ -11,6 +12,7 @@ Welcome to [BLS Digital](https://bls-digital.herokuapp.com/)!
     - [Agile Methodology](#agile-methodology)
     - [Wireframes/Flowchart](#wireframesflowchart)
     - [Design](#design)
+- [Marketing](#marketing)
 - [Features](#features)
     - [Existing Features](#existing-features) 
     - [Future Features](#future-features)
@@ -85,6 +87,25 @@ The colors used is combination of three main color. Two darker ones and a lighte
 ![Colors](/media/readme_images/colors.png)
 
 [Back to top](#contents)
+## Marketing
+### SEO
+Here I have made i list of possible keywords. The ones that liked the most is implemented in the head of the HTML in a meta tag with keywords.
+The most important words are also used in the content of the pages that has content.
+
+![Keywords](/media/readme_images/keywords.png)
+
+### E-commerce Business Model
+
+![Business model](/media/readme_images/marketing_plan.png)
+
+### Newsletter
+The footer of every page has a form to sign up for newsletter. It is connected to my mailchimp account where you can send custom designed emails easily and free.
+
+### Facebook Page
+A Facebook page is created for this e-commerce store. I will only provide a screenshot of it, because I will disable it so my account wont get closed for some reason.
+
+![Facebook page](/media/readme_images/facebook_page.png)
+
 ## Features
 ### Existing Features For All Users
 #### Navigation Bar
