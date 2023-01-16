@@ -4,7 +4,14 @@ from .models import Product, Category, PurchaseOrder
 # Register your models here.
 
 
+class OrderPurchaseOrderAdminInLine(admin.TabularInline):
+    model = PurchaseOrder
+    readonly_fields = ('quantity',)
+
+
 class ProductAdmin(admin.ModelAdmin):
+    inlines = (OrderPurchaseOrderAdminInLine,)
+
     list_display = (
         'name',
         'sku',
