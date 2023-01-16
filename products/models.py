@@ -53,3 +53,15 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class PurchaseOrder(models.Model):
+    """
+    Model for keeping track of the quantity in stock
+    """
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(blank=False, null=False, )
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.product.name
