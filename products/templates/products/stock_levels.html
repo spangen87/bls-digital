@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Stock Levels</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>SKU</th>
+                <th>Stock Level</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock_level in stock_levels %}
+                <tr>
+                    <td>{{ stock_level.product.name }}</td>
+                    <td>{{ stock_level.product.sku }}</td>
+                    <td>{{ stock_level.quantity }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator
-from .models import Product, Category
+from .models import Product, Category, PurchaseOrder
 from .forms import ProductForm
 
 # Create your views here.
@@ -159,3 +159,12 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+def stock_levels(request):
+    stock_levels = PurchaseOrder.objects.all()
+    template = 'products/stock_levels.html'
+    context = {
+        'stock_levels': stock_levels,
+    }
+    return render(request, template, context)
