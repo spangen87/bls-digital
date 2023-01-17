@@ -1,23 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Stock Levels</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>SKU</th>
-                <th>Stock Level</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for stock_level in stock_levels %}
-                <tr>
-                    <td>{{ stock_level.product.name }}</td>
-                    <td>{{ stock_level.product.sku }}</td>
-                    <td>{{ stock_level.quantity }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="row pt-5 vh-100">
+    <div class="col-12 col-md-6 mx-auto">
+        <h3>Stock Levels</h3>
+        <div class="card py-3 px-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>SKU</th>
+                        <th>Stock Level</th>
+                        <th>Update Stock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stock_level in stock_levels %}
+                    <tr>
+                        <td>{{ stock_level.product.name }}</td>
+                        <td>{{ stock_level.product.sku }}</td>
+                        <td>{{ stock_level.quantity }}</td>
+                        <td><a class="btn btn-primary"
+                            href="{% url 'update_stock' stock_level.product.id %}">Update Stock</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator
 from .models import Product, Category, PurchaseOrder
-from .forms import ProductForm
+from .forms import ProductForm, UpdateStockForm
 
 # Create your views here.
 
@@ -161,10 +161,29 @@ def delete_product(request, product_id):
     return redirect(reverse('products'))
 
 
+@login_required
 def stock_levels(request):
     stock_levels = PurchaseOrder.objects.all()
     template = 'products/stock_levels.html'
     context = {
         'stock_levels': stock_levels,
     }
+    return render(request, template, context)
+
+
+@login_required
+def update_stock(request, product_id):
+    stock_level = PurchaseOrder.objects.get(product_id=product_id)
+    if request.method == 'POST':
+        form = UpdateStockForm(request.POST, instance=stock_level)
+        if form.is_valid():
+            form.save()
+            return redirect('stock_levels')
+    else:
+        form = UpdateStockForm(instance=stock_level)
+    template = 'products/update_stock.html'
+    context = {
+        'form': form,
+        'product': stock_level.product
+        }
     return render(request, template, context)

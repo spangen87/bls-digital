@@ -60,7 +60,7 @@ class PurchaseOrder(models.Model):
     Model for keeping track of the quantity in stock
     """
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(blank=False, null=False, )
+    quantity = models.IntegerField(blank=False, null=False, default=0)
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

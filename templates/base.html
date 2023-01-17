@@ -84,7 +84,8 @@
               <div class="dropdown-menu">
                 {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
-                <a class="dropdown-item" href="{% url 'add_product' %}">Manage Products</a>
+                <a class="dropdown-item" href="{% url 'add_product' %}">Add Products</a>
+                <a class="dropdown-item" href="{% url 'stock_levels' %}">Manage Stock</a>
                 <div class="dropdown-divider"></div>
                 {% endif %}
                 <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>

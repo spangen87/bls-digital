@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row pt-5 vh-100">
+    <div class="col-12 col-md-6 mx-auto">
+        <h3>Update Stock Level for {{ product.name }} ({{ product.sku }})</h3>
+        <div class="card py-3 px-3">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit" value="Save" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
