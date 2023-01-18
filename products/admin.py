@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, PurchaseOrder
+from .models import Product, Category, PurchaseOrder, ProductReview
 
 # Register your models here.
 
@@ -9,8 +9,15 @@ class OrderPurchaseOrderAdminInLine(admin.TabularInline):
     readonly_fields = ('quantity',)
 
 
+class ProductReviewProductAdminInLine(admin.TabularInline):
+    model = ProductReview
+
+
 class ProductAdmin(admin.ModelAdmin):
-    inlines = (OrderPurchaseOrderAdminInLine,)
+    inlines = (
+        OrderPurchaseOrderAdminInLine,
+        ProductReviewProductAdminInLine
+        )
 
     list_display = (
         'name',
@@ -40,6 +47,15 @@ class PurchaseOrderAdmin(admin.ModelAdmin):
     )
 
 
+class ProductReviewAdmin(admin.ModelAdmin):
+    list_display = (
+        'product',
+        'stars',
+        'content',
+    )
+
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(PurchaseOrder, PurchaseOrderAdmin)
+admin.site.register(ProductReview, ProductReviewAdmin)
