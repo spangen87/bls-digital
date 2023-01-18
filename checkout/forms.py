@@ -9,13 +9,13 @@ class OrderForm(forms.ModelForm):
             {'pattern': '^\+\d{8,17}$'})
         self.fields['full_name'].widget.attrs.update(
             {'pattern':
-                "^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$"})
+                '^(?=.*\S).+$'})
         self.fields['street_address1'].widget.attrs.update(
             {'pattern':
-                "^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$"})
+                '^(?=.*\S).+$'})
         self.fields['town_or_city'].widget.attrs.update(
             {'pattern':
-                "^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$"})
+                '^(?=.*\S).+$'})
 
     class Meta:
         model = Order
