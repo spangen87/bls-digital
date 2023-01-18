@@ -143,6 +143,9 @@ def checkout(request):
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing.')
 
+    if request.method == 'POST':
+        order_form = OrderForm(request.POST)
+
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
