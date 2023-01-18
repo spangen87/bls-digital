@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator
-from .models import Product, Category, PurchaseOrder
+from .models import Product, Category, PurchaseOrder, ProductReview
 from .forms import ProductForm, UpdateStockForm
 
 # Create your views here.
@@ -77,6 +77,18 @@ def product_detail(request, product_id):
     """
 
     product = get_object_or_404(Product, pk=product_id)
+
+    # Add a product review
+    if request.method == 'POST' and request.user.is_authenticated:
+        stars = request.POST.get('stars', 3)
+        content = request.POST.get('content', '')
+        review = ProductReview.objects.create(
+            product=product,
+            user=request.user,
+            stars=stars,
+            content=content,
+        )
+        return redirect(reverse('product_detail', args=[product_id]))
 
     context = {
         'product': product,
@@ -187,3 +199,23 @@ def update_stock(request, product_id):
         'product': stock_level.product
         }
     return render(request, template, context)
+
+
+@login_required
+def give_review(request, product_id):
+    """
+    View to post a review of a product
+    """
+    product = get_object_or_404(Product, pk=product_id)
+
+    # Add a product review
+    if request.method == 'POST' and request.user.is_authenticated:
+        stars = request.POST.get('stars', 3)
+        content = request.POST.get('content', '')
+        review = ProductReview.objects.create(
+            product=product,
+            user=request.user,
+            stars=stars,
+            content=content,
+        )
+        return redirect(reverse('product_detail', args=[product_id]))

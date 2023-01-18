@@ -15,4 +15,5 @@ urlpatterns = [
         'stock/update/<int:product_id>/',
         views.update_stock,
         name='update_stock'),
+    path('review/<int:product_id>/', views.give_review, name='give_review'),
 ]
