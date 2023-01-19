@@ -55,19 +55,19 @@ class StripeWH_Handler:
         if username != 'AnonymousUser':
             profile = UserProfile.objects.get(user__username=username)
             if save_info:
-                profile.default_full_name = shipping_details.name,
+                profile.default_full_name = shipping_details.name
                 profile.default_street_address1 = (
-                    shipping_details.address.line1,)
+                    shipping_details.address.line1)
                 profile.default_street_address2 = (
-                    shipping_details.address.line2,)
+                    shipping_details.address.line2)
                 profile.default_postcode = (
-                    shipping_details.address.postal_code,)
-                profile.default_town_or_city = shipping_details.address.city,
-                profile.default_county = shipping_details.address.state,
+                    shipping_details.address.postal_code)
+                profile.default_town_or_city = shipping_details.address.city
+                profile.default_county = shipping_details.address.state
                 profile.default_country.code = (
-                    shipping_details.address.country,)
-                profile.default_phone_number = shipping_details.phone,
-                profile.default_email = billing_details.email,
+                    shipping_details.address.country)
+                profile.default_phone_number = shipping_details.phone
+                profile.default_email = billing_details.email
                 profile.save()
 
         order_exists = False
@@ -75,17 +75,17 @@ class StripeWH_Handler:
         while attempt <= 5:
             try:
                 order = Order.objects.get(
-                    # full_name__iexact=shipping_details.name,
-                    # street_address1__iexact=shipping_details.address.line1,
-                    # street_address2__iexact=shipping_details.address.line2,
-                    # postcode__iexact=shipping_details.address.postal_code,
-                    # town_or_city__iexact=shipping_details.address.city,
-                    # county__iexact=shipping_details.address.state,
-                    # country__iexact=shipping_details.address.country,
-                    # phone_number__iexact=shipping_details.phone,
-                    # email__iexact=billing_details.email,
-                    # grand_total=grand_total,
-                    # original_bag=bag,
+                    full_name__iexact=shipping_details.name,
+                    street_address1__iexact=shipping_details.address.line1,
+                    street_address2__iexact=shipping_details.address.line2,
+                    postcode__iexact=shipping_details.address.postal_code,
+                    town_or_city__iexact=shipping_details.address.city,
+                    county__iexact=shipping_details.address.state,
+                    country__iexact=shipping_details.address.country,
+                    phone_number__iexact=shipping_details.phone,
+                    email__iexact=billing_details.email,
+                    grand_total=grand_total,
+                    original_bag=bag,
                     stripe_pid=pid,
                 )
                 order_exists = True

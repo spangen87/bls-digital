@@ -69,10 +69,18 @@ class PurchaseOrder(models.Model):
 
 
 class ProductReview(models.Model):
+
+    # class Stars(models.IntegerChoices):
+    #     ONE = 1
+    #     TWO = 2
+    #     THREE = 3
+    #     FOUR = 4
+    #     FIVE = 5
+
     product = models.ForeignKey(
         Product, related_name='reviews', on_delete=models.CASCADE)
     user = models.ForeignKey(
-        User, related_name='reviews', on_delete=models.CASCADE)
+        User, related_name='reviews', on_delete=models.CASCADE, auto_created=True)
     content = models.TextField(blank=True, null=True)
     stars = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)

@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator
 from .models import Product, Category, PurchaseOrder, ProductReview
-from .forms import ProductForm, UpdateStockForm
+from .forms import ProductForm, UpdateStockForm, ReviewForm
 
 # Create your views here.
 
@@ -77,21 +77,23 @@ def product_detail(request, product_id):
     """
 
     product = get_object_or_404(Product, pk=product_id)
-
+    form = ReviewForm()
     # Add a product review
-    if request.method == 'POST' and request.user.is_authenticated:
-        stars = request.POST.get('stars', 3)
-        content = request.POST.get('content', '')
-        review = ProductReview.objects.create(
-            product=product,
-            user=request.user,
-            stars=stars,
-            content=content,
-        )
-        return redirect(reverse('product_detail', args=[product_id]))
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review = form.save()
+            messages.success(request, 'Successfully added review!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to add review.\
+                 Please check that the form is valid.')
 
     context = {
         'product': product,
+        'form': form,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -210,12 +212,14 @@ def give_review(request, product_id):
 
     # Add a product review
     if request.method == 'POST' and request.user.is_authenticated:
-        stars = request.POST.get('stars', 3)
-        content = request.POST.get('content', '')
-        review = ProductReview.objects.create(
-            product=product,
-            user=request.user,
-            stars=stars,
-            content=content,
-        )
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save()
+            messages.success(request, 'Successfully added review!')
+            return redirect(reverse('product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to add review.\
+                 Please check that the form is valid.')
+    else:
+        form = ProductForm()
         return redirect(reverse('product_detail', args=[product_id]))
