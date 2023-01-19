@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator
-from .models import Product, Category, PurchaseOrder, ProductReview
+from .models import Product, Category, ProductReview
 from .forms import ProductForm, UpdateStockForm, ReviewForm
 
 # Create your views here.
@@ -84,6 +84,7 @@ def product_detail(request, product_id):
         if form.is_valid():
             review = form.save(commit=False)
             review.user = request.user
+            review.product = product
             review = form.save()
             messages.success(request, 'Successfully added review!')
             return redirect(reverse('product_detail', args=[product.id]))
@@ -177,7 +178,7 @@ def delete_product(request, product_id):
 
 @login_required
 def stock_levels(request):
-    stock_levels = PurchaseOrder.objects.all()
+    stock_levels = Product.objects.all()
     template = 'products/stock_levels.html'
     context = {
         'stock_levels': stock_levels,
@@ -187,7 +188,7 @@ def stock_levels(request):
 
 @login_required
 def update_stock(request, product_id):
-    stock_level = PurchaseOrder.objects.get(product_id=product_id)
+    stock_level = Product.objects.get(id=product_id)
     if request.method == 'POST':
         form = UpdateStockForm(request.POST, instance=stock_level)
         if form.is_valid():
@@ -198,28 +199,6 @@ def update_stock(request, product_id):
     template = 'products/update_stock.html'
     context = {
         'form': form,
-        'product': stock_level.product
+        'product': stock_level
         }
     return render(request, template, context)
-
-
-@login_required
-def give_review(request, product_id):
-    """
-    View to post a review of a product
-    """
-    product = get_object_or_404(Product, pk=product_id)
-
-    # Add a product review
-    if request.method == 'POST' and request.user.is_authenticated:
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            review = form.save()
-            messages.success(request, 'Successfully added review!')
-            return redirect(reverse('product_detail', args=[product.id]))
-        else:
-            messages.error(request, 'Failed to add review.\
-                 Please check that the form is valid.')
-    else:
-        form = ProductForm()
-        return redirect(reverse('product_detail', args=[product_id]))

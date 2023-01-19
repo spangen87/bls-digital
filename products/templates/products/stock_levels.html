@@ -17,11 +17,11 @@
                 <tbody>
                     {% for stock_level in stock_levels %}
                     <tr>
-                        <td>{{ stock_level.product.name }}</td>
-                        <td>{{ stock_level.product.sku }}</td>
+                        <td>{{ stock_level.name }}</td>
+                        <td>{{ stock_level.sku }}</td>
                         <td>{{ stock_level.quantity }}</td>
                         <td><a class="btn btn-primary"
-                            href="{% url 'update_stock' stock_level.product.id %}">Update Stock</a></td>
+                            href="{% url 'update_stock' stock_level.id %}">Update Stock</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

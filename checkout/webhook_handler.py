@@ -125,6 +125,8 @@ class StripeWH_Handler:
                             quantity=item_data,
                         )
                         order_line_item.save()
+                        product.quantity -= item_data
+                        product.save()
             except Exception as e:
                 if order:
                     order.delete()

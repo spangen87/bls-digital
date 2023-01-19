@@ -70,6 +70,8 @@ def checkout(request):
                             quantity=item_data,
                         )
                         order_line_item.save()
+                        product.quantity -= item_data
+                        product.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
                         'One of the products was not found.'

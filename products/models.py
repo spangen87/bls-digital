@@ -51,36 +51,20 @@ class Product(models.Model):
         )
     image = models.ImageField(null=True, blank=True)
     image_url = models.URLField(null=True, blank=True)
+    quantity = models.IntegerField(blank=False, null=False, default=0)
 
     def __str__(self):
         return self.name
 
 
-class PurchaseOrder(models.Model):
-    """
-    Model for keeping track of the quantity in stock
-    """
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.IntegerField(blank=False, null=False, default=0)
-    date = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.product.name
-
-
 class ProductReview(models.Model):
-
-    # class Stars(models.IntegerChoices):
-    #     ONE = 1
-    #     TWO = 2
-    #     THREE = 3
-    #     FOUR = 4
-    #     FIVE = 5
-
+    """
+    Model for product reviews
+    """
     product = models.ForeignKey(
         Product, related_name='reviews', on_delete=models.CASCADE)
     user = models.ForeignKey(
-        User, related_name='reviews', on_delete=models.CASCADE, auto_created=True)
+        User, related_name='reviews', on_delete=models.CASCADE)
     content = models.TextField(blank=True, null=True)
     stars = models.IntegerField()
     date = models.DateTimeField(auto_now_add=True)
