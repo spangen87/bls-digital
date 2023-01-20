@@ -178,6 +178,9 @@ def delete_product(request, product_id):
 
 @login_required
 def stock_levels(request):
+    """
+    View current stock levels
+    """
     stock_levels = Product.objects.all()
     template = 'products/stock_levels.html'
     context = {
@@ -188,6 +191,13 @@ def stock_levels(request):
 
 @login_required
 def update_stock(request, product_id):
+    """
+    View to update stock levels for store owners
+    """
+    if not request.user.is_superuser:
+        messages.error(request, 'Only store owners can do that.')
+        return redirect(reverse('home'))
+
     stock_level = Product.objects.get(id=product_id)
     if request.method == 'POST':
         form = UpdateStockForm(request.POST, instance=stock_level)
@@ -202,3 +212,13 @@ def update_stock(request, product_id):
         'product': stock_level
         }
     return render(request, template, context)
+
+
+@login_required
+def add_to_wishlist(request, product_id, user_id):
+    product = Product.objects.get(id=product_id)
+    user = User.objects.get(id=user_id)
+    wishlist_item = Wishlist(product=product, user=user)
+    wishlist_item.save()
+
+    return redirect(reverse('product_detail', args=[product_id]))
