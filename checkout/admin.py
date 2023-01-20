@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Order, OrderLineItem
+from products.models import Product
 
 # Register your models here.
 
@@ -52,6 +53,14 @@ class OrderAdmin(admin.ModelAdmin):
     )
 
     ordering = ('-date',)
+
+    # actions = ['delete_model']
+
+    # def delete_model(self, request, obj):
+    #     products = OrderLineItem.objects.get(request)
+    #     for item in products():
+    #         item += OrderLineItem.quantity
+    #         obj.delete()
 
 
 admin.site.register(Order, OrderAdmin)

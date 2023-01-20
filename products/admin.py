@@ -19,6 +19,7 @@ class ProductAdmin(admin.ModelAdmin):
         'image',
         'weight_in_grams',
         'origin',
+        'quantity',
     )
 
     ordering = ('name',)
