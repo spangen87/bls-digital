@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator
-from .models import Product, Category, ProductReview
+from .models import Product, Category, ProductReview, Wishlist
 from .forms import ProductForm, UpdateStockForm, ReviewForm
 
 # Create your views here.
@@ -209,16 +209,34 @@ def update_stock(request, product_id):
     template = 'products/update_stock.html'
     context = {
         'form': form,
-        'product': stock_level
+        'product': stock_level,
         }
     return render(request, template, context)
 
 
 @login_required
 def add_to_wishlist(request, product_id, user_id):
+    """
+    Add product to wishlist
+    """
     product = Product.objects.get(id=product_id)
     user = User.objects.get(id=user_id)
     wishlist_item = Wishlist(product=product, user=user)
     wishlist_item.save()
 
     return redirect(reverse('product_detail', args=[product_id]))
+
+
+@login_required
+def wishlist(request):
+    """
+    View wishlist for logged in user
+    """
+    user = request.user
+    wishlist = Wishlist.objects.filter(user=user)
+    context = {
+        'wishlist': wishlist,
+    }
+    template = 'products/wishlist.html'
+
+    return render(request, template, context)

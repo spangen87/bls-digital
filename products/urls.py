@@ -15,4 +15,9 @@ urlpatterns = [
         'stock/update/<int:product_id>/',
         views.update_stock,
         name='update_stock'),
+    path('wishlist/', views.wishlist, name='wishlist'),
+    path(
+        'add_to_wishlist/<int:product_id>',
+        views.add_to_wishlist,
+        name='add_to_wishlist'),
 ]
