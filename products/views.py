@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator
+from django.contrib.auth.models import User
 from .models import Product, Category, ProductReview, Wishlist
 from .forms import ProductForm, UpdateStockForm, ReviewForm
 
@@ -219,10 +220,11 @@ def add_to_wishlist(request, product_id, user_id):
     """
     Add product to wishlist
     """
-    product = Product.objects.get(id=product_id)
+    product = Product.objects.get(pk=product_id)
     user = User.objects.get(id=user_id)
     wishlist_item = Wishlist(product=product, user=user)
     wishlist_item.save()
+    messages.success(request, 'Product added to wishlist!')
 
     return redirect(reverse('product_detail', args=[product_id]))
 

@@ -32,11 +32,11 @@
                 </div>
             </div>
             {% endfor %}
-            {% endif %}
+            {% else %}
             <div class="text-center mb-4">
                 <p>Your wishlist is empty. Maybe add some <a href="{% url 'products' %}">products</a>?</p>
             </div>
-
+            {% endif %}
         </div>
     </div>
 </div>
