@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-{% load bag_tools %}
 
 {% block content %}
 
@@ -28,6 +27,12 @@
                             <p class="lead fw-normal mb-2">{{ item.product.name }}</p>
                             <p class="text-muted fw-normal mb-2">{{ item.product.sku }}</p>
                         </div>
+                        <div class="col-md-3 col-lg-3 col-xl-3">
+                            <a href="{% url 'product_detail' item.product.id %}" class="btn btn-secondary">Visit Product</a>
+                        </div>
+                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                            <a href="{% url 'remove_from_wishlist' item.id %}"><i class="fas fa-trash fa-lg"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,34 +45,5 @@
         </div>
     </div>
 </div>
-
-{% endblock %}
-
-{% block postloadjs %}
-{{ block.super }}
-{% include 'products/includes/quantity_input_script.html' %}
-
-<script type="text/javascript">
-    // Update quantity on click
-    $('.update-link').click(function (e) {
-        var form = $(this).prev('.update-form');
-        form.submit();
-    })
-
-    // Remove item and reload on click
-    $('.remove-item').click(function (e) {
-        var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/shopping_bag/remove/${itemId}`;
-        var data = {
-            'csrfmiddlewaretoken': csrfToken
-        };
-
-        $.post(url, data)
-            .done(function () {
-                location.reload();
-            });
-    })
-</script>
 
 {% endblock %}

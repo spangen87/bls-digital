@@ -220,7 +220,7 @@ def add_to_wishlist(request, product_id, user_id):
     """
     Add product to wishlist
     """
-    product = Product.objects.get(pk=product_id)
+    product = Product.objects.get(id=product_id)
     user = User.objects.get(id=user_id)
     wishlist_item = Wishlist(product=product, user=user)
     wishlist_item.save()
@@ -242,3 +242,15 @@ def wishlist(request):
     template = 'products/wishlist.html'
 
     return render(request, template, context)
+
+
+@login_required
+def remove_from_wishlist(request, wishlist_id):
+    """
+    Remove item from wishlist
+    """
+    wishlist_item = Wishlist.objects.get(id=wishlist_id)
+
+    wishlist_item.delete()
+    messages.success(request, 'Removed from wishlist!!')
+    return redirect(reverse('wishlist'))
