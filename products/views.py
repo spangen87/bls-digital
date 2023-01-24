@@ -222,9 +222,13 @@ def add_to_wishlist(request, product_id, user_id):
     """
     product = Product.objects.get(id=product_id)
     user = User.objects.get(id=user_id)
-    wishlist_item = Wishlist(product=product, user=user)
-    wishlist_item.save()
-    messages.success(request, 'Product added to wishlist!')
+    wishlist_item, created = Wishlist.objects.get_or_create(
+        product=product, user=user)
+    if created:
+        wishlist_item.save()
+        messages.success(request, 'Product added to wishlist!')
+    else:
+        messages.info(request, 'Product is already in your wishlist.')
 
     return redirect(reverse('product_detail', args=[product_id]))
 
