@@ -103,6 +103,7 @@
                         </div>
                         {% endif %}
                 </form>
+                {% if user.is_authenticated %}
                 <div class="col-12 mb-4">
                     {% if not in_wishlist %}
                     <p>Add to my wishlist: <a href="{% url 'add_to_wishlist' product.id user.id %}"><i class="fa fa-heart fa-lg"></i></a></p>
@@ -110,6 +111,11 @@
                     <p>Remove from my wishlist: <a href="{% url 'remove_from_wishlist' wishlist_item.id %}"><i class="fa fa-heart fa-lg in-wishlist"></i></a></p>
                     {% endif %}
                 </div>
+                {% else %}
+                <div class="col-12 mb-4">
+                    <p><a href="{% url 'account_login' %}">Login</a> or <a href="{% url 'account_signup' %}">Sign Up</a> to add product to wishlist. <i class="fa fa-heart fa-lg"></i></p>        
+                </div>
+                {% endif %}
                 <hr>
                 <h5 class="mt-5">Product Reviews</h5>
                 <div class="col-12">
@@ -151,7 +157,7 @@
 
                     </form>
                     {% else %}
-                    <p><a href="{% url 'account_login' %}">Login </a>or <a href="{% url 'account_signup' %}">sign up
+                    <p><a href="{% url 'account_login' %}">Login </a>or <a href="{% url 'account_signup' %}">Sign Up
                         </a>to give a review.</p>
                     {% endif %}
                 </div>
