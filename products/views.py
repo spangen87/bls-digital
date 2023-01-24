@@ -79,6 +79,16 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
     form = ReviewForm()
+    # Check if product is in users wishlist
+    user = request.user
+    in_wishlist = False
+    wishlist_item = None
+    if user.is_authenticated:
+        wishlist_item = Wishlist.objects.filter(
+            product=product, user=user).first()
+        in_wishlist = Wishlist.objects.filter(
+            product=product, user=user).exists()
+
     # Add a product review
     if request.method == 'POST':
         form = ReviewForm(request.POST)
@@ -96,6 +106,8 @@ def product_detail(request, product_id):
     context = {
         'product': product,
         'form': form,
+        'in_wishlist': in_wishlist,
+        'wishlist_item': wishlist_item,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -257,4 +269,11 @@ def remove_from_wishlist(request, wishlist_id):
 
     wishlist_item.delete()
     messages.success(request, 'Removed from wishlist!!')
-    return redirect(reverse('wishlist'))
+    referer = request.META.get('HTTP_REFERER')
+    if referer:
+        if 'wishlist' in referer:
+            return redirect('wishlist')
+        else:
+            return redirect(referer)
+    else:
+        return redirect('wishlist')

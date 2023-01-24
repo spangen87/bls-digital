@@ -169,7 +169,19 @@ body {
 }
 
 .fa-heart {
+  color: grey;
+}
+
+.fa-heart:hover {
   color: red;
+}
+
+.in-wishlist {
+  color: red;
+}
+
+.in-wishlist:hover {
+  color: grey;
 }
 
 a:hover {

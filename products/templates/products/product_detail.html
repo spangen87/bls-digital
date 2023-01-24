@@ -103,14 +103,18 @@
                         </div>
                         {% endif %}
                 </form>
-                <div class="col-12">
-                    <p>Add to my wishlist: <a href="{% url 'add_to_wishlist' product.id user.id %}"><i class="fa fa-heart"></i></a></p>
+                <div class="col-12 mb-4">
+                    {% if not in_wishlist %}
+                    <p>Add to my wishlist: <a href="{% url 'add_to_wishlist' product.id user.id %}"><i class="fa fa-heart fa-lg"></i></a></p>
+                    {% else %}
+                    <p>Remove from my wishlist: <a href="{% url 'remove_from_wishlist' wishlist_item.id %}"><i class="fa fa-heart fa-lg in-wishlist"></i></a></p>
+                    {% endif %}
                 </div>
                 <hr>
-                <h5>Product Reviews</h5>
+                <h5 class="mt-5">Product Reviews</h5>
                 <div class="col-12">
                     {% for review in product.reviews.all %}
-                    <div class="col-12 card bg-light">
+                    <div class="col-12 card bg-light mt-3">
                         <div class="card-header">
                             <strong>Review From: </strong> {{ review.user }} | 
                             <strong>Date: </strong> {{ review.date|date:'Y-m-d' }} | 
@@ -132,7 +136,7 @@
                     {% if request.user.is_authenticated %}
                     <form method="POST" id="review_form">
                         {% csrf_token %}
-                        <h5>Give Review</h5>
+                        <h5 class="mt-5">Give Review</h5>
                         <label for="stars">Stars <i class="fa fa-star"></i></label>
                         <select class="form-select" name="stars" id="stars" selected="3">
                             <option value="1">1</option>
