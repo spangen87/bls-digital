@@ -24,18 +24,20 @@ def add_to_bag(request, item_id):
     bag = request.session.get('bag', {})
 
     if item_id in list(bag.keys()):
-        if product.quantity > quantity:
-            bag[item_id] += quantity
+        if product.quantity >= quantity:
+            bag[item_id]['quantity'] += quantity
             product.quantity -= quantity
+            product.save()
             messages.success(
                 request, f'Updated {product.name} quantity to {bag[item_id]}')
         else:
             messages.error(request, 'There is not enough stock!')
 
     else:
-        if product.quantity > quantity:
+        if product.quantity >= quantity:
             bag[item_id] = quantity
             product.quantity -= quantity
+            product.save()
             messages.success(request, f'Added {product.name} to your bag')
         else:
             messages.error(request, 'There is not enough stock!')
