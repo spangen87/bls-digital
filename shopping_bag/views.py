@@ -25,7 +25,7 @@ def add_to_bag(request, item_id):
 
     if item_id in list(bag.keys()):
         if product.quantity >= quantity:
-            bag[item_id]['quantity'] += quantity
+            bag[item_id] += quantity
             product.quantity -= quantity
             product.save()
             messages.success(
@@ -81,7 +81,10 @@ def remove_from_bag(request, item_id):
 
     try:
         bag = request.session.get('bag', {})
+        quantity = bag[item_id]
         bag.pop(item_id)
+        product.quantity += quantity
+        product.save()
         messages.success(request, f'Removed {product.name} from your bag')
 
         request.session['bag'] = bag
