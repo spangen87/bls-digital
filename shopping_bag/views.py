@@ -47,10 +47,6 @@ def add_to_bag(request, item_id):
 
 
 def adjust_bag(request, item_id):
-    """
-    Add product to shopping bag with specified quantity
-    From Boutique Ado walkthrough
-    """
     product = get_object_or_404(Product, pk=item_id)
     quantity = request.POST.get('quantity')
     if quantity.isdigit():
@@ -60,15 +56,19 @@ def adjust_bag(request, item_id):
         return redirect(reverse('view_shopping_bag'))
     bag = request.session.get('bag', {})
 
+    # Get the previous quantity of the item in the bag
+    previous_quantity = bag.get(item_id, 0)
     if quantity > 0:
         bag[item_id] = quantity
         messages.success(
             request, f'Updated {product.name} quantity to {bag[item_id]}')
     else:
-        bag.pop(item_id)
+        bag.pop(item_id, None)
         messages.success(request, f'Removed {product.name} from your bag')
-
     request.session['bag'] = bag
+    # Adjust the stock
+    product.quantity += previous_quantity - quantity
+    product.save()
     return redirect(reverse('view_shopping_bag'))
 
 

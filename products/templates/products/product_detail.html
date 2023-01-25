@@ -89,13 +89,12 @@
                             <input type="submit" class="btn btn-primary" value="Add to Shopping Bag">
                         </div>
                         {% elif product.quantity > 0 %}
-                        <p class="text-warning fw-bold px-2 my-2">Few In Stock</p>
+                        <p class="text-warning fw-bold px-2 my-2">Few In Stock: <strong>{{ product.quantity }}</strong></p>
                         <div class="col-12 mt-3 mb-5">
                             <a href="{% url 'products' %}" class="btn btn-secondary">Back to Products</a>
                             <input type="submit" class="btn btn-primary" value="Add to Shopping Bag">
                         </div>
                         {% else %}
-                        {{ product.quantity }}
                         <p class="text-danger fw-bold px-2 my-2">Out Of Stock</p>
                         <div class="col-12 mt-3 mb-5">
                             <a href="{% url 'products' %}" class="btn btn-secondary">Back to Products</a>
