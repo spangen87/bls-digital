@@ -25,6 +25,9 @@ class Product(models.Model):
     """
     Model for the products
     """
+    class Meta:
+        ordering = ('-name',)
+
     category = models.ForeignKey(
         'Category', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(
