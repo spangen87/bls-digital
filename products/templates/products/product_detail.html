@@ -126,7 +126,7 @@
                             <strong>Stars: </strong> {{ review.stars }}<i class="fa fa-star"></i>
                         </div>
                         <div class="card-body">
-                            {{ review.content }}
+                            {{ review.content|linebreaks }}
                         </div>
                     </div>
                     {% empty %}

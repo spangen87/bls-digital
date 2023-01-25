@@ -222,3 +222,6 @@ PHONENUMBER_DEFAULT_REGION = 'SE'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Sets length of session
+SESSION_COOKIE_AGE = 86400
