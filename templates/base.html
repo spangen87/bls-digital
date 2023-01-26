@@ -82,6 +82,9 @@
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false">Account</a>
               <div class="dropdown-menu">
+                <a class="dropdown-item" href="https://www.privacypolicygenerator.info/live.php?token=GGgjYrU9co3UOssI2dLnw5WX5L2hfMNs" 
+                  rel="external" target="_blank">Privacy Policy</a>
+                <div class="dropdown-divider"></div>
                 {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
                 <a class="dropdown-item" href="{% url 'add_product' %}">Add Products</a>
@@ -172,7 +175,7 @@
             name="b_f1abfa798414594fad30c45fb_90d85852b4" tabindex="-1" value=""></div>
       </form>
       <a href="{% url 'home' %}"><img class="logo mt-2" src="{{ MEDIA_URL }}logo.png" alt="Logo" style="width: 280px;"></a>
-      <p class="mt-2">© 2022 BLS Digital. All rights reserved.</p>
+      <p class="mt-2">© 2022 BLS Digital. All rights reserved. <br><small class="text-muted">This site will not handle real payments/orders. It is built for educational purpose.</small></p>
     </div>
   </footer>
 
