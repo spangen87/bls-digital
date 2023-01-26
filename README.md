@@ -223,6 +223,12 @@ When logged in you can access your wishlist under "Account". Here you can see wh
 ![My profile](/media/readme_images/wishlist.png)
 
 [Back to top](#contents)
+#### Product Detail As Logged In User
+As a logged in user you have the possibility to add or remove a product from your wishlist by clicking the heart. The heart will be red when the product is in the wishlist, and grey when it is not. Below you also have the possibility to add a review along with 1-5 stars.
+
+![Product detail when logged in](/media/readme_images/product_detail_logged_in.png)
+
+[Back to top](#contents)
 ### Existing Features For Store Owners
 #### Add, delete and edit products
 When you are logged in as a store owner (superuser) you have the ability to add new products to the store from the front end, edit existing products and deleting products.
@@ -235,9 +241,19 @@ On the product page you have two new links. One for editing the product, and one
 
 Same function as above on the product detail page.
 
-![Add product](/media/readme_images/add_product.png)
+![Add product](/media/readme_images/add_product_quantity.png)
 
-When you click on account as a store owner you have an additional option, Manage Products. That will lead to this form for adding a new product to the store.
+When you click on account as a store owner you have an additional option, Add Products. That will lead to this form for adding a new product to the store. The last field, "Quantity" sets the initial stock for the product.
+
+[Back to top](#contents)
+#### Manage Stock
+As a store owner you have a link under "Account" that brings you to the page for managin the stock for the products. You can see the levels at the moment, and click update for update the stock levels.
+
+![Stock Levels](/media/readme_images/manage_stock1.png)
+
+![Update Stock](/media/readme_images/manage_stock2.png)
+
+This stock function is basic. When a product is added to the shopping cart, the quantity added is removed from the stock. If the product is removed from the cart, it will be put back in stock. Also if a order i deleted, the products in that order will be returned to the stock. This way the stock numbers can't be negative, in case more customers have the same product in the shopping bag at once. But the limitation in this feature is that if some products are left in the shopping bag, and the session expires or gets deleted, the products won't be returned to the stock. In a real world application, I would build further on this function and add some automatic checks to get it more robust and reliable.
 
 [Back to top](#contents)
 #### Mark Order As Shipped
@@ -248,10 +264,9 @@ When logged in to the admin panel I have added a boolean field "Order shipped". 
 [Back to top](#contents)
 ### Future Features
 - Add discount cuopons would be a nice feature to have in the future.
-- Handling of the stock would be needed for live use of the store.
+- A more advanced stock handling.
 - FAQ page to avoid unecessary emails with questions.
 - Privacy policy would be needed for the shop to be live.
-- Reviews and rating would be a nice feature to add in the future.
 - Add more payment options.
 - Logging in with social media accounts.
 
@@ -378,7 +393,7 @@ A lot of testing has been done throughout the development. Here follows a summar
 [Back to top](#contents)
 #### Home
 ##### Expected
-All links should work. And the search bar accessed in the navbar should work and give a message if you try without entering any characters. The sign up form for newsletter in the footer should work, and should not submit if it is something other than an email enetred.
+All links should work. And the search bar accessed in the navbar should work and give a message if you try without entering any characters. The sign up form for newsletter in the footer should work, and should not submit if it is something other than an email entered.
 
 ##### Outcome
 - All links works as expected.
