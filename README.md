@@ -68,15 +68,19 @@ For this project I used a free database called [ElephantSQL](https://www.elephan
 More about how to set that up in the deployment section.
 
 There is five models in the database that I have created, along with a number that comes with Django from start.
-- Products. A model for all the product details needed for a product.
+- Products. A model for all the product details needed for a product. There is also a basic stock tracking in this model.
 - Category. Complements the product model and makes it possible to sort the products in to categories.
 - UserProfile. Gives logged in user the possibility to save their delivery information and have it pre filled to the next time.
 - Order. Stores all the order information. This is also presented to logged in user in their profile page.
-- OrderLineItems. Stores the products on the order and keep track of the quantity of each product.
+- OrderLineItems. Stores the products on the order and keep track of the quantity of each product in the order.
+- ProductReview. Stores reviews given by a logged in user for a specific product.
+- Wishlist. A model that makes it possible for a logged in user to create their own wishlist with products. 
 
-Alot in these models comes from Boutique Ado Walkthrough Project at Code Institute. But I have made some changes to the models to suit my need better. Their is also some more validation and help texts added where needed.
+Some of these models are similar to the models in Boutique Ado Walkthrough Project at Code Institute. But I have made some changes to the models and added more functionality. There is also some more validation and help texts added where needed.
 
-![Database](/media/readme_images/database_schema.png)
+Note: From the standard django models included, the django_content_type and django_migrations is missing from the image below. This is due to a limit in Draw SQL for 15 tables.
+
+![Database](/media/readme_images/database_schedule.png)
 
 [Back to top](#contents)
 ### Design
@@ -146,9 +150,12 @@ The products are divided in to three columns. Showing the picture, price, catego
 
 [Back to top](#contents)
 #### Product Detail
-This page shows a picture of the product, description, name, category and price. Then there is a option to choose quantity before adding it to the shopping bag. There is also a link back to the product list.
+This page shows a picture of the product, description, name, category and price. Then there is a option to choose quantity before adding it to the shopping bag. There is also a link back to the product list. Beneath that there the possibility to log in to add or remove the product from the wishlist. And below that the reviews of the product is showing. If you are logged in you can add a review. Above the buttons there is a colored text that shows the stock status. If it is more than five items in stock it will be green and show "In Stock". Is it less than five it will be orange and say "Few left: (quantity left)". If it is out of stock it will say "Out of Stock" in red text and the add to bag button will be disabled.
 
-![Product detail](/media/readme_images/product_detail_page.png)
+I have also added a link to the product manual in PDF if available. Otherwise it will be a external link to the manufacturers website. The weight of the product and origin is shown if there is such information about the product.
+
+![Product detail](/media/readme_images/product_detail1.png)
+![Product detail](/media/readme_images/product_detail2.png)
 
 [Back to top](#contents)
 #### Why Smart Locks?
@@ -190,7 +197,7 @@ The shopping bag is displayed with a card for each product that includes the nec
 
 [Back to top](#contents)
 #### Checkout
-This page has a form with all the necessary fields to handle the order. The phone number field has some added validation so the user needs to enter it beginning with a country code. The required fields are marked with a star. Below these fields there is a checkbox to save the information to your profile if you are logged in. The card field is from [Stripe](https://stripe.com/).
+This page has a form with all the necessary fields to handle the order. The phone number field has some added validation so the user needs to enter it beginning with a country code. The required fields are marked with a star. And all required fields have regex validation added to them. Below these fields there is a checkbox to save the information to your profile if you are logged in. The card field is from [Stripe](https://stripe.com/).
 To the right of the form there is a summary of what the order contains. At the bottom there is a button to complete the order or to go back to the shop. There is also a summary shown how much the card will be charged.
 
 ![Checkout](/media/readme_images/checkout_page.png)
@@ -205,9 +212,15 @@ This page shows that order was created successfully with a summary of the order.
 ### Existing Features For Logged In User
 #### My Profile
 As a logged in regular user you have the ability to edit your default shipping details and to view your order history.
-You can aldso click the link on the order to view the complete order confirmation. A toast will then tell it's a historic order confirmation and not a new one.
+You can also click the link on the order to view the complete order confirmation. A toast will then tell it's a historic order confirmation and not a new one.
 
 ![My profile](/media/readme_images/my_profile_page.png)
+
+[Back to top](#contents)
+#### Wishlist
+When logged in you can access your wishlist under "Account". Here you can see what products you have in your wishlist, visit them, or remove them from your list.
+
+![My profile](/media/readme_images/wishlist.png)
 
 [Back to top](#contents)
 ### Existing Features For Store Owners
