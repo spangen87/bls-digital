@@ -67,7 +67,7 @@ Before i started with anything else I made some wireframes to guide me through t
 For this project I used a free database called [ElephantSQL](https://www.elephantsql.com/).
 More about how to set that up in the deployment section.
 
-There is five models in the database that I have created, along with a number that comes with Django from start.
+There is seven models in the database that I have created, along with a number that comes with Django from start.
 - Products. A model for all the product details needed for a product. There is also a basic stock tracking in this model.
 - Category. Complements the product model and makes it possible to sort the products in to categories.
 - UserProfile. Gives logged in user the possibility to save their delivery information and have it pre filled to the next time.
@@ -116,7 +116,7 @@ A Facebook page is created for this e-commerce store. I will only provide a scre
 ### Existing Features For All Users
 #### Navigation Bar
 Here I wanted clear and simplistic look. A small logo to the left followed by some menu links. Products and Account have dropdowns for further menu choices.
-To the right there is a search bar, followed by a link to the shopping bag. The shopping bag have a badge the quantity of products in the shopping bag. Below that there is a summary of the total amount in the shopping bag.
+To the right there is a search bar, followed by a link to the shopping bag. The shopping bag have a badge with the quantity of products in the shopping bag. Below that there is a summary of the total amount in the shopping bag.
 
 The search bar searches in the product name and in the description. With this amount of products it is not absolutely necessary, but it is a nice feature to have if there are more products added to the shop. 
 
@@ -132,7 +132,7 @@ Without scrolling further you get a picture of what the store sells and what kin
 
 ![Home 1](/media/readme_images/home_1.png)
 
-If you scroll down the page there is a nice picture of one of products on a door. It give a little bit of a luxury feeling around the product. To the left of the image there is a heading in two colors that shows that the product is available in two colors.
+If you scroll down the page there is a nice picture of one of the products on a door. It give a little bit of a luxury feeling around the product. To the left of the image there is a heading in two colors that shows that the product is available in two colors.
 
 ![Home 2](/media/readme_images/home_2.png)
 
@@ -266,7 +266,6 @@ When logged in to the admin panel I have added a boolean field "Order shipped". 
 - Add discount cuopons would be a nice feature to have in the future.
 - A more advanced stock handling.
 - FAQ page to avoid unecessary emails with questions.
-- Privacy policy would be needed for the shop to be live.
 - Add more payment options.
 - Logging in with social media accounts.
 
@@ -591,7 +590,7 @@ All links should work. And the search bar accessed in the navbar should work and
 
 ![Stock levels](/media/readme_images/stock_levels_page.png)
 
-- When clicking on the Update Stock button, you are taken to the form as expected.
+- When clicking on the Update Stock button, you are taken to the form as expected. Here it is actually possible to have negative numbers. In case something have gone wrong and there is a rest order it should be possible. Here it is the store owners responsobility to add a correct value. A negative number will also behave as aout of stock.
 
 ![Update Stock](/media/readme_images/update_stock.png)
 
@@ -771,7 +770,7 @@ This is how you make a clone of the repository:
 [Back to top](#contents)
 ## Acknowledgements
 This project was made as Portfolio Project 5 in the Full Stack Software Deevelopment education from [Code Institute](https://codeinstitute.net/).
-I would like to thank my mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/), tutors from Tutor Support, the slack community at [Code Institute](https://codeinstitute.net/) for the help and support during this project. I also would like to thank my colleagues Daniel and Järker at [Best Las](https://bestlas.se/) for giving me the opportunity and time to do this education. It has been more intense then I could imagine, but also more fun and rewarding!
+I would like to thank my mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/), tutors from Tutor Support, the slack community at [Code Institute](https://codeinstitute.net/) for the help and support during this project. I also would like to thank my colleagues Daniel and Järker at [Best Las](https://bestlas.se/) for giving me the opportunity and time to do this education. Also a big thanks to Ludde Hedlund for helping me with the logic when I got stuck. It has been more intense then I could imagine, but also more fun and rewarding!
 
 Rikard Spångmyr, 2023.
 [Back to top](#contents)

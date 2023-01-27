@@ -21,7 +21,7 @@
                         <td>{{ stock_level.sku }}</td>
                         {% if stock_level.quantity > 5 %}
                         <td class="fw-bold">{{ stock_level.quantity }} <i class="fa fa-circle text-success"></i></td>
-                        {% elif stock_level.quantity == 0 %}
+                        {% elif stock_level.quantity <= 0 %}
                         <td class="fw-bold">{{ stock_level.quantity }} <i class="fa fa-circle text-danger"></i></td>
                         {% else %}
                         <td class="fw-bold">{{ stock_level.quantity }} <i class="fa fa-circle text-warning"></i></td>
