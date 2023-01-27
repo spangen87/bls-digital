@@ -34,7 +34,7 @@ Welcome to [BLS Digital](https://bls-digital.herokuapp.com/)!
 
 ## User Experience
 ### User Stories
-![Screenshot of all user stories](/media/readme_images/user_stories.png)
+![Screenshot of all user stories](/media/readme_images/issues.png)
 
 [Back to top](#contents)
 ### Agile Methodology
@@ -43,7 +43,7 @@ GitHubs Projects is used in this project to keep track of the user stories that 
 It has been a big help to go there and get a overlook of what has been done and what is left when it has been tough.
 When you work in a team i think this will be an even bigger help.
 
-I also divided the work in two iterations so I could have goals that were more manageable.
+I also divided the work in three iterations so I could have goals that were more manageable.
 
 ![Screenshot of project board](/media/readme_images/project_board.png)
 
@@ -423,6 +423,11 @@ All links should work. And the search bar accessed in the navbar should work and
 - Information is rendering properly.
 - All links works.
 - Add to shopping bag function works, and the quantity picker adds the correct quantity to the shopping bag.
+- Weight, origin and link to manual/manufacturer is there and works.
+- Stock status is showing properly, quantity if stock is low, and out of stock with disabled add to cart button when out of stock.
+- Add/remove to wishlist is working and can only be done when logged in. Otherwise a link to login/sign up will show.
+- Product reviews are displayed with content, stars, date added, and from which user.
+- Logged in user can add a new review. 
 
 ##### Outcome
 - Information is showing as expected.
@@ -431,6 +436,23 @@ All links should work. And the search bar accessed in the navbar should work and
 - If you enter a invalid number manually in the quantity field the validation works and will not add it to the shopping bag.
 
 ![Search](/media/readme_images/product_detail_message.png)
+
+- Weight, origin and link renders as expected and the link is working.
+- Stock status shows properly when in stock.
+
+![In Stock](/media/readme_images/in_stock.png)
+
+- When there is few in stock it shows the quantity left.
+
+![Few in stock](/media/readme_images/few_in_stock.png)
+
+- When product is out of stock the button is disabled and out of stock show in red text.
+
+![Few in stock](/media/readme_images/out_of_stock.png)
+
+- If you try to add more products than there is in stock, a message shows as it should.
+
+![Not enough stock](/media/readme_images/not_enough_stock.png)
 
 [Back to top](#contents)
 #### Why Smart Locks?
