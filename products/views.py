@@ -202,6 +202,10 @@ def stock_levels(request):
     """
     View current stock levels
     """
+    if not request.user.is_superuser:
+        messages.error(request, 'Only store owners can do that.')
+        return redirect(reverse('home'))
+
     stock_levels = Product.objects.all()
     template = 'products/stock_levels.html'
     context = {

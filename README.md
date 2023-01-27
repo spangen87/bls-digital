@@ -427,7 +427,7 @@ All links should work. And the search bar accessed in the navbar should work and
 - Stock status is showing properly, quantity if stock is low, and out of stock with disabled add to cart button when out of stock.
 - Add/remove to wishlist is working and can only be done when logged in. Otherwise a link to login/sign up will show.
 - Product reviews are displayed with content, stars, date added, and from which user.
-- Logged in user can add a new review. 
+- Logged in user can add a new review. Text field can be empty in case user only want to give a star rating.
 
 ##### Outcome
 - Information is showing as expected.
@@ -453,6 +453,26 @@ All links should work. And the search bar accessed in the navbar should work and
 - If you try to add more products than there is in stock, a message shows as it should.
 
 ![Not enough stock](/media/readme_images/not_enough_stock.png)
+
+- When not logged in the correct information and links are showing on the wishlist section.
+
+![Wishlist logged out](/media/readme_images/wishlist_logged_out.png)
+
+- Add/remove from wishlist when logged in works as it should. Additional to below, there is also a toast showing a success message.
+
+![Add to wishlist](/media/readme_images/add_logged_in.png)
+
+![Remove from wishlist](/media/readme_images/remove_logged_in.png)
+
+- Reviews are shown as expected. With date added, username, amount of stars and the review itself.
+
+![Review](/media/readme_images/review.png)
+
+- Review form is only available for logged in users, and works correctly. A success message is shown, and the review is visible on the page.
+
+![Review](/media/readme_images/review_logged_out.png)
+
+![Review](/media/readme_images/post_review.png)
 
 [Back to top](#contents)
 #### Why Smart Locks?
@@ -510,9 +530,9 @@ All links should work. And the search bar accessed in the navbar should work and
 
 ![Invalid card](/media/readme_images/checkout_card_error2.png)
 
-- When the other form fields are invalid, an other message is shown. See picture below.
+- When the other form fields are invalid, an other message is shown. See picture below. There is now added regex validation to the required fields, preventing only spaces to be used for example, which instead will mark the field that has an invalid input before the submitting of the form begins.
 
-![Invalid card](/media/readme_images/checkout_form_error.png)
+![Form error](/media/readme_images/checkout_form_error.png)
 
 - After successfull checkout you are redirected to the success page. Picture below. An email confirmation is also sent to customer as expected, and also a notification email to the store owner.
 
@@ -537,7 +557,7 @@ All links should work. And the search bar accessed in the navbar should work and
 ![Profile validation](/media/readme_images/profile_validation.png)
 
 [Back to top](#contents)
-#### Manage Products
+#### Add Products
 ##### Expected
 - Page only accesible for superusers.
 - You can add a product with image.
@@ -555,6 +575,46 @@ All links should work. And the search bar accessed in the navbar should work and
 ![Add product validation](/media/readme_images/add_product_validation.png)
 
 [Back to top](#contents)
+#### Manage Stock
+##### Expected
+- Only available for superusers.
+- See a list with all products and the stock levels. Marked with a dot in green, yellow or red depending on the stock level. Over five in stock, green. Five or below, yellow. Out of stock, red.
+- A link on each product to edit the stock quantity.
+- Save new stock quantity.
+
+##### Outcome
+- Only superusers can access the page. If you are not logged in, you are redirected to the login page. If you are logged in as a regular user you are redirected to the home page along with a error message as below.
+
+![No access](/media/readme_images/no_access.png)
+
+- The list renders properly and shows clearly the stock levels. The color dots makes it quick to see where you need to take action.
+
+![Stock levels](/media/readme_images/stock_levels_page.png)
+
+- When clicking on the Update Stock button, you are taken to the form as expected.
+
+![Update Stock](/media/readme_images/update_stock.png)
+
+- The new stock quantity is saved as expected.
+
+[Back to top](#contents)
+#### Wishlist
+##### Expected
+- Only show the items added by the logged in user.
+- Render small product image, product name and SKU.
+- Have a link to visit the product and one to remove the product from the wishlist.
+
+##### Outcome
+- If you try to access to wishlist you are redirected to the login page if you are not logged in.
+- Only the items added by the logged in user is shown as expected.
+- Information and links renders as it should.
+
+![Wishlist page](/media/readme_images/wishlist_page.png)
+
+- The link for visting the product works as expected, and if you click on the thrash can it will be removed from the list. A success message is shown when removed.
+
+![Remove from wishlist](/media/readme_images/wishlist_remove.png)
+
 ## Bugs
 ### Solved
 - When clicking on a category link under products, the products in that category won't show.
