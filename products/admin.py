@@ -33,6 +33,13 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ProductReviewAdmin(admin.ModelAdmin):
+    readonly_fields = (
+        'user',
+        'product',
+        'stars',
+        'content',
+    )
+
     list_display = (
         'product',
         'stars',

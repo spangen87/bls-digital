@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.core.paginator import Paginator
+from django.conf import settings
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from .models import Product, Category, ProductReview, Wishlist
 from .forms import ProductForm, UpdateStockForm, ReviewForm
@@ -98,6 +100,12 @@ def product_detail(request, product_id):
             review.product = product
             review = form.save()
             messages.success(request, 'Successfully added review!')
+            store_email = settings.DEFAULT_FROM_EMAIL
+            subject = f'You got a new review for {review.product}!'
+            body = f'New review from: {review.user}. Login to admin dashboard \
+                to review it. Product: {review.product} \
+                    https://bls-digital.herokuapp.com/admin/'
+            send_mail(subject, body, store_email, [store_email])
             return redirect(reverse('product_detail', args=[product.id]))
         else:
             messages.error(request, 'Failed to add review.\
